@@ -6,10 +6,10 @@ import * as PATHS from "../utils/paths";
 
 export default function LogIn({ authenticate, history }) {
   const [form, setForm] = useState({
-    username: "",
+    email: "",
     password: "",
   });
-  const { username, password } = form;
+  const { email, password } = form;
   const [error, setError] = useState(null);
 
   function handleInputChange(event) {
@@ -22,7 +22,7 @@ export default function LogIn({ authenticate, history }) {
     event.preventDefault();
 
     const credentials = {
-      username,
+      email,
       password,
     };
     login(credentials).then((res) => {
@@ -39,13 +39,13 @@ export default function LogIn({ authenticate, history }) {
     <div>
       <h1>Log In</h1>
       <form onSubmit={handleFormSubmission} className="signup__form">
-        <label htmlFor="input-username">Username</label>
+        <label htmlFor="input-email">Username</label>
         <input
-          id="input-username"
+          id="input-email"
           type="text"
-          name="username"
-          placeholder="username"
-          value={username}
+          name="email"
+          placeholder="E-mail"
+          value={email}
           onChange={handleInputChange}
           required
         />

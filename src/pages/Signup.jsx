@@ -7,9 +7,10 @@ import * as PATHS from "../utils/paths";
 export default function Signup({ authenticate, history }) {
   const [form, setForm] = useState({
     username: "",
+    email: "",
     password: "",
   });
-  const { username, password } = form;
+  const { username, email, password } = form;
   const [error, setError] = useState(null);
 
   function handleInputChange(event) {
@@ -21,6 +22,7 @@ export default function Signup({ authenticate, history }) {
     event.preventDefault();
     const credentials = {
       username,
+      email,
       password,
     };
     signup(credentials).then((res) => {
@@ -49,6 +51,16 @@ export default function Signup({ authenticate, history }) {
           name="username"
           placeholder="Text"
           value={username}
+          onChange={handleInputChange}
+          required
+        />
+        <label htmlFor="input-email">E-mail</label>
+        <input
+          id="input-email"
+          type="email"
+          name="email"
+          placeholder="E-mail"
+          value={email}
           onChange={handleInputChange}
           required
         />

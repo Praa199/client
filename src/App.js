@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar/Navbar";
 import HomePage from "./pages/HomePage";
 import LogIn from "./pages/LogIn";
 import ProtectedPage from "./pages/ProtectedPage";
+import ProtectedTable from "./pages/ProtectedTable";
 import Signup from "./pages/Signup";
 import NormalRoute from "./routing-components/NormalRoute";
 import ProtectedRoute from "./routing-components/ProtectedRoute";
@@ -76,6 +77,12 @@ export default function App() {
           exact
           path={PATHS.PROTECTEDPAGE}
           component={ProtectedPage}
+          user={user}
+        />
+        <ProtectedTable
+          exact
+          path={PATHS.PROTECTEDTABLE}
+          component={ProtectedTable}
           user={user}
         />
       </Switch>

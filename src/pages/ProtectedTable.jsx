@@ -1,163 +1,166 @@
 import React from "react";
 
+import axios from "axios";
+import { Link } from "react-router-dom";
+import * as PATHS from "../utils/paths";
+
+const datasArray = [
+  {
+    month: "june",
+    income: {
+      passive: [5, 6],
+      active: [5, 7],
+      otherIncome: [5, 8],
+    },
+    expenses: {
+      fixed: [5, 4],
+      variable: [5, 3],
+      periodic: [5, 2],
+      otherExpenses: [5, 1],
+    },
+  },
+  {
+    month: "july",
+    income: {
+      passive: [54, 11],
+      active: [55, 22],
+      otherIncome: [56, 33],
+    },
+    expenses: {
+      fixed: [51, 44],
+      variable: [52, 55],
+      periodic: [53, 66],
+      otherExpenses: [59, 77],
+    },
+  },
+  {
+    month: "august",
+    income: {
+      passive: [15, 16],
+      active: [25, 88],
+      otherIncome: [35, 99],
+    },
+    expenses: {
+      fixed: [45, 135],
+      variable: [55, 123],
+      periodic: [65, 25],
+      otherExpenses: [75, 55],
+    },
+  },
+];
+
 // import Button from "react-bootstrap/Button";
-import Table from "react-bootstrap/Table";
+// import Table from "react-bootstrap/Table";
 
 function ProtectedTable(props) {
+  console.log(props.user);
   const { user } = props;
+  const [budgetArray, setBudgetArray] = React.useState([]);
+
+  React.useEffect(() => {
+    // axios
+    //   .get(`http://localhost:5000/api/movies`)
+    //   .then((response) => {
+    //     console.log("response:", response);
+    //     setListOfMovies(response.data);
+    //   })
+    //   .catch((err) => {
+    //     console.error(err);
+    //   });
+    // return () => console.log("Bye bye eeh");
+
+    console.log("WE CAN RUN SOME CODE HERE, COMPONENT WAS `mounted`");
+    setBudgetArray(datasArray);
+    return () => console.log("Bye bye eeh");
+  }, []);
 
   if (!user) {
     return;
   }
-  //   const { username, budget } = user;
+  const { username, budget } = user;
   //   const { income, expenses } = budget;
   //   const { passive, active, otherIncome } = income;
   //   const { fixed, variable, periodic, otherExpenses } = expenses;
 
   return (
     <div>
-      {/* <p>Income</p>
-      <Table striped bordered hover variant="dark">
-        <colgroup span="4"></colgroup>
-        <tr>
-          <th></th>
-          <th>ACTIVE</th>
-          <th>PASSIVE</th>
-          <th>OTHER</th>
-        </tr>
-        <tr>
-          <td>Week 1 </td>
-          <td>{passive[0]}</td>
-          <td>{active[0]}</td>
-          <td>{otherIncome[0]}</td>
-        </tr>
-        <tr>
-          <td>Week 2 </td>
-          <td>{passive[1]}</td>
-          <td>{active[1]}</td>
-          <td>{otherIncome[1]}</td>
-        </tr>
-        <tr>
-          <td>Week 3 </td>
-          <td>{passive[2]}</td>
-          <td>{active[2]}</td>
-          <td>{otherIncome[2]}</td>
-        </tr>
-        <tr>
-          <td>Week 4 </td>
-          <td>{passive[3]}</td>
-          <td>{active[3]}</td>
-          <td>{otherIncome[3]}</td>
-        </tr>
-      </Table>
+      <p>{budgetArray.month}</p>
+      {budgetArray.map((byMonth) => {
+        const { month, expenses, income } = byMonth;
+        const { active, passive, otherIncome } = income;
+        const { fixed, variable, periodic, otherExpenses } = expenses;
 
-      <Table striped bordered hover variant="dark">
-        <p>Expenses</p>
-        <colgroup span="4"></colgroup>
-        <tr>
-          <th>FIXED</th>
-          <th>VARIABLE</th>
-          <th>PERIODIC</th>
-          <th>OTHER</th>
-        </tr>
-        <tr>
-          <td>Week 1 </td>
-          <td>{fixed[0]}</td>
-          <td>{variable[0]}</td>
-          <td>{periodic[0]}</td>
-          <td>{otherExpenses[0]}</td>
-        </tr>
-        <tr>
-          <td>Week 2 </td>
-          <td>{fixed[1]}</td>
-          <td>{variable[1]}</td>
-          <td>{periodic[1]}</td>
-          <td>{otherExpenses[1]}</td>
-        </tr>
-        <tr>
-          <td>Week 3 </td>
-          <td>{fixed[2]}</td>
-          <td>{variable[2]}</td>
-          <td>{periodic[2]}</td>
-          <td>{otherExpenses[2]}</td>
-        </tr>
-        <tr>
-          <td>Week 4 </td>
-          <td>{fixed[3]}</td>
-          <td>{variable[3]}</td>
-          <td>{periodic[3]}</td>
-          <td>{otherExpenses[3]}</td>
-        </tr>
-      </Table> */}
-      {/* <p>Table with colgroup</p>
-      <table>
-        <colgroup span="4"></colgroup>
-        <tr>
-          <th>Countries</th>
-          <th>Capitals</th>
-          <th>Population</th>
-          <th>Language</th>
-        </tr>
-        <tr>
-          <td>USA</td>
-          <td>Washington, D.C.</td>
-          <td>309 million</td>
-          <td>English</td>
-        </tr>
-        <tr>
-          <td>Sweden</td>
-          <td>Stockholm</td>
-          <td>9 million</td>
-          <td>Swedish</td>
-        </tr>
-      </table>
-      <style type="text/css">
-        {`
-    .btn-flat {
-      background-color: purple;
-      color: white;
-    }
-
-    .btn-xxl {
-      padding: 1rem 1.5rem;
-      font-size: 1.5rem;
-    }
-    `}
-      </style>
-
-      <Button variant="flat" size="xxl">
-        flat button
-      </Button> */}
-
-      <Table striped bordered hover variant="dark">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Username</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td colSpan="2">Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
-        </tbody>
-      </Table>
+        console.log("byMonth****", income);
+        return (
+          <section>
+            <span></span>
+            <table striped bordered hover variant="dark">
+              <colgroup span="4"></colgroup>
+              <tr>
+                <th> INCOMES </th>
+                <th>Week 1</th>
+                <th>Week 2</th>
+                <th>Week 3</th>
+                <th>Week 4</th>
+              </tr>
+              <tr>
+                <td> ACTIVE </td>
+                {active.map((singleActive) => (
+                  <td> $ {singleActive}.00 </td>
+                ))}
+              </tr>
+              <tr>
+                <td> PASSIVE </td>
+                {passive.map((singlePassive) => (
+                  <td> $ {singlePassive}.00 </td>
+                ))}
+              </tr>
+              <tr>
+                <td> OTHER </td>
+                {otherIncome.map((singleOther) => (
+                  <td> $ {singleOther}.00 </td>
+                ))}
+              </tr>
+            </table>
+            <table striped bordered hover variant="dark">
+              <colgroup span="4"></colgroup>
+              <tr>
+                <th> EXPENSES </th>
+                <th>Week 1</th>
+                <th>Week 2</th>
+                <th>Week 3</th>
+                <th>Week 4</th>
+              </tr>
+              <tr>
+                <td> FIXED </td>
+                {fixed.map((singleFixed) => (
+                  <td> $ {singleFixed}.00 </td>
+                ))}
+              </tr>
+              <tr>
+                <td> VARIABLE </td>
+                {variable.map((singleVariable) => (
+                  <td> $ {singleVariable}.00 </td>
+                ))}
+              </tr>
+              <tr>
+                <td> PERIODIC </td>
+                {periodic.map((singlePeriodic) => (
+                  <td> $ {singlePeriodic}.00 </td>
+                ))}
+              </tr>
+              <tr>
+                <td> OTHER </td>
+                {otherExpenses.map((singleOther) => (
+                  <td> $ {singleOther}.00 </td>
+                ))}
+              </tr>
+              <tr></tr>
+              <tr></tr>
+            </table>
+          </section>
+        );
+      })}
     </div>
   );
 }

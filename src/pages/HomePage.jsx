@@ -1,21 +1,81 @@
 import logo from "../logo.svg";
-import "../App.css";
 import { Button, Form } from "react-bootstrap";
+import "../App.css";
+import React, { useState } from "react";
+import { sendData } from "../services/data.input";
 
 function HomePage(props) {
-  console.log("props.user***", props);
+  const [form, setForm] = useState({
+    month: "",
+    income: {
+      passive: [],
+      active: [],
+      otherIncome: [],
+    },
+    expenses: {
+      fixed: [],
+      variable: [],
+      periodic: [],
+      otherExpenses: [],
+    },
+  });
+
+  const {
+    month,
+    passive,
+    active,
+    otherIncome,
+    fixed,
+    variable,
+    periodic,
+    otherExpenses,
+  } = form;
+  const [error, setError] = useState(null);
+
+  function handleInputChange(event) {
+    const { name, value } = event.target;
+
+    return setForm({ ...form, [name]: value });
+  }
+
+  function handleFormSubmission(event) {
+    event.preventDefault();
+    const data = {
+      month,
+      passive,
+      active,
+      otherIncome,
+    };
+    sendData(data).then((res) => {
+      if (!res.status) {
+        // unsuccessful signup
+        console.error("data input was unsuccessful: ", res);
+        return setError({
+          message: "data input was unsuccessful! Please check the console.",
+        });
+      }
+      console.log("succesfully sent data to backend", res);
+    });
+  }
+
   return (
     <div className="App">
       <header className="App-header">
         {props.user ? (
           <>
             <h1>Hey, I'm logged in</h1>
-            <h1>Hello {props.user.username}, welcome back </h1>
+            <h1>Hello {props.user.username}, welcome back master </h1>
 
-            <Form>
+            <Form onSubmit={handleFormSubmission}>
               <Form.Group controlId="formBasic">
                 <Form.Label>Month</Form.Label>
-                <Form.Control type="text" placeholder="Ex: January" />
+                <Form.Control
+                  type="text"
+                  placeholder="Ex: January"
+                  name="month"
+                  value={month}
+                  onChange={handleInputChange}
+                />
                 <Form.Text className="text-muted">
                   Enter tha month you want to register.
                 </Form.Text>
@@ -23,7 +83,13 @@ function HomePage(props) {
 
               <Form.Group controlId="formBasic">
                 <Form.Label>Active Incomes</Form.Label>
-                <Form.Control type="number" placeholder="Ex: $200.00" />
+                <Form.Control
+                  type="number"
+                  placeholder="Ex: $200.00"
+                  name="active"
+                  value={active}
+                  onChange={handleInputChange}
+                />
                 <Form.Text className="text-muted">
                   Here you enter salaries, wages, etc.
                 </Form.Text>
@@ -31,7 +97,13 @@ function HomePage(props) {
 
               <Form.Group controlId="formBasic">
                 <Form.Label>Passive Incomes</Form.Label>
-                <Form.Control type="number" placeholder="Ex: $300.00 " />
+                <Form.Control
+                  type="number"
+                  placeholder="Ex: $300.00 "
+                  name="passive"
+                  value={passive}
+                  onChange={handleInputChange}
+                />
                 <Form.Text className="text-muted">
                   Here you enter interests, rents, etc.
                 </Form.Text>
@@ -39,7 +111,13 @@ function HomePage(props) {
 
               <Form.Group controlId="formBasic">
                 <Form.Label>Other Incomes</Form.Label>
-                <Form.Control type="number" placeholder="Ex: $150.00 " />
+                <Form.Control
+                  type="number"
+                  placeholder="Ex: $150.00 "
+                  name="otherIncome"
+                  value={otherIncome}
+                  onChange={handleInputChange}
+                />
                 <Form.Text className="text-muted">
                   Here you enter presents, gambling, etc.
                 </Form.Text>
@@ -50,10 +128,16 @@ function HomePage(props) {
               </Button>
             </Form>
 
-            <Form>
+            <Form onSubmit={handleFormSubmission}>
               <Form.Group controlId="formBasic">
                 <Form.Label>Fixed Expenses</Form.Label>
-                <Form.Control type="number" placeholder="Ex: $200.00" />
+                <Form.Control
+                  type="number"
+                  placeholder="Ex: $200.00"
+                  name="expenses"
+                  value={fixed}
+                  onChange={handleInputChange}
+                />
                 <Form.Text className="text-muted">
                   Here you enter car payments, morgage, etc.
                 </Form.Text>
@@ -61,7 +145,13 @@ function HomePage(props) {
 
               <Form.Group controlId="formBasic">
                 <Form.Label>Periodic Expenses</Form.Label>
-                <Form.Control type="number" placeholder="Ex: $200.00" />
+                <Form.Control
+                  type="number"
+                  placeholder="Ex: $200.00"
+                  name="periodic"
+                  value={periodic}
+                  onChange={handleInputChange}
+                />
                 <Form.Text className="text-muted">
                   Here you enter rent, food, etc.
                 </Form.Text>
@@ -69,7 +159,13 @@ function HomePage(props) {
 
               <Form.Group controlId="formBasic">
                 <Form.Label>Variable Expenses</Form.Label>
-                <Form.Control type="number" placeholder="Ex: $300.00 " />
+                <Form.Control
+                  type="number"
+                  placeholder="Ex: $300.00 "
+                  name="variable"
+                  value={variable}
+                  onChange={handleInputChange}
+                />
                 <Form.Text className="text-muted">
                   Here you enter recreation, hobbies, etc.
                 </Form.Text>
@@ -77,9 +173,15 @@ function HomePage(props) {
 
               <Form.Group controlId="formBasic">
                 <Form.Label>Other Expenses</Form.Label>
-                <Form.Control type="number" placeholder="Ex: $150.00 " />
+                <Form.Control
+                  type="number"
+                  placeholder="Ex: $150.00 "
+                  name="otherExpenses"
+                  value={otherExpenses}
+                  onChange={handleInputChange}
+                />
                 <Form.Text className="text-muted">
-                  Here you enter gambling, charity donations etc.
+                  Here you enter gambling, charity donations, etc.
                 </Form.Text>
               </Form.Group>
 
@@ -87,8 +189,6 @@ function HomePage(props) {
                 Submit
               </Button>
             </Form>
-            <button>one button</button>
-            <button>another button</button>
           </>
         ) : (
           <>

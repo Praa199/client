@@ -25,12 +25,19 @@ function successStatus(res) {
 
 // creates a basic url for every request in this file
 const authService = axios.create({
-  baseURL: `${process.env.REACT_APP_SERVER_URL}/input`,
+  baseURL: `${process.env.REACT_APP_SERVER_URL}/protected`,
 });
 
 export function sendData(data) {
   return authService
     .post("/form", data)
+    .then(successStatus)
+    .catch(internalServerError);
+}
+
+export function getData(budgetData) {
+  return authService
+    .get(`table`, budgetData)
     .then(successStatus)
     .catch(internalServerError);
 }

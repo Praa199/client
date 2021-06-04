@@ -5,74 +5,25 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import * as PATHS from "../utils/paths";
 
-// const datasArray = [
-//   {
-//     month: "june",
-//     income: {
-//       passive: [5, 6],
-//       active: [5, 7],
-//       otherIncome: [5, 8],
-//     },
-//     expenses: {
-//       fixed: [5, 4],
-//       variable: [5, 3],
-//       periodic: [5, 2],
-//       otherExpenses: [5, 1],
-//     },
-//   },
-//   {
-//     month: "july",
-//     income: {
-//       passive: [54, 11],
-//       active: [55, 22],
-//       otherIncome: [56, 33],
-//     },
-//     expenses: {
-//       fixed: [51, 44],
-//       variable: [52, 55],
-//       periodic: [53, 66],
-//       otherExpenses: [59, 77],
-//     },
-//   },
-//   {
-//     month: "august",
-//     income: {
-//       passive: [15, 16],
-//       active: [25, 88],
-//       otherIncome: [35, 99],
-//     },
-//     expenses: {
-//       fixed: [45, 135],
-//       variable: [55, 123],
-//       periodic: [65, 25],
-//       otherExpenses: [75, 55],
-//     },
-//   },
-// ];
-
-// import Button from "react-bootstrap/Button";
-// import Table from "react-bootstrap/Table";
-
 function ProtectedTable(props) {
-  // console.log(props.user);
+  console.log(props.user.budget);
   const { user } = props;
   const [budgetArray, setBudgetArray] = React.useState([]);
 
-  const budgetData = {
-    month,
-    passive,
-    active,
-    otherIncome,
-    fixed,
-    variable,
-    periodic,
-    otherExpenses,
-  };
-
   React.useEffect(() => {
-    getData(budgetData)
+    // budgetData = {
+    //   month,
+    //   passive,
+    //   active,
+    //   otherIncome,
+    //   fixed,
+    //   variable,
+    //   periodic,
+    //   otherExpenses,
+    // };
+    getData()
       .then((res) => {
-        console.log("response:", res);
+        console.log("response:****", res);
         setBudgetArray(res.data);
       })
       .catch((err) => {
@@ -91,17 +42,14 @@ function ProtectedTable(props) {
 
   return (
     <div>
-      <p>{budgetArray.month}</p>
       {budgetArray.map((byMonth) => {
         const { month, expenses, income } = byMonth;
         const { active, passive, otherIncome } = income;
         const { fixed, variable, periodic, otherExpenses } = expenses;
 
-        {
-          /* console.log("byMonth****", income); */
-        }
         return (
           <section>
+            <h3>{month}</h3>
             <span></span>
             <table striped bordered hover variant="dark">
               <colgroup span="4"></colgroup>
@@ -126,9 +74,9 @@ function ProtectedTable(props) {
               </tr>
               <tr>
                 <td> OTHER </td>
-                {otherIncome.map((singleOther) => (
+                {/* {otherIncome.map((singleOther) => (
                   <td> $ {singleOther}.00 </td>
-                ))}
+                ))} */}
               </tr>
             </table>
             <table striped bordered hover variant="dark">
@@ -160,9 +108,9 @@ function ProtectedTable(props) {
               </tr>
               <tr>
                 <td> OTHER </td>
-                {otherExpenses.map((singleOther) => (
+                {/* {otherExpenses.map((singleOther) => (
                   <td> $ {singleOther}.00 </td>
-                ))}
+                ))} */}
               </tr>
               <tr></tr>
               <tr></tr>

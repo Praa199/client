@@ -79,13 +79,13 @@ export default function App() {
           authenticate={authenticate}
           component={LogIn}
         />
-        <ProtectedRoute
+        {/* <ProtectedRoute
           exact
           path={PATHS.PROTECTEDPAGE}
           component={ProtectedPage}
           user={user}
-        />
-        <ProtectedTable
+        /> */}
+        <ProtectedRoute
           exact
           path={PATHS.PROTECTEDTABLE}
           component={ProtectedTable}

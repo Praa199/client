@@ -5,18 +5,19 @@ import React, { useState } from "react";
 import { sendData } from "../services/data.input";
 
 function HomePage(props) {
+  const { user } = props;
   const [form, setForm] = useState({
     month: "",
     income: {
-      passive: [],
-      active: [],
-      otherIncome: [],
+      passive: 0,
+      active: 0,
+      otherIncome: 0,
     },
     expenses: {
-      fixed: [],
-      variable: [],
-      periodic: [],
-      otherExpenses: [],
+      fixed: 0,
+      variable: 0,
+      periodic: 0,
+      otherExpenses: 0,
     },
   });
 
@@ -41,10 +42,15 @@ function HomePage(props) {
   function handleFormSubmission(event) {
     event.preventDefault();
     const data = {
+      user,
       month,
       passive,
       active,
       otherIncome,
+      fixed,
+      variable,
+      periodic,
+      otherExpenses,
     };
     sendData(data).then((res) => {
       if (!res.status) {
@@ -61,10 +67,10 @@ function HomePage(props) {
   return (
     <div className="App">
       <header className="App-header">
-        {props.user ? (
+        {user ? (
           <>
             <h1>Hey, I'm logged in</h1>
-            <h1>Hello {props.user.username}, welcome back master </h1>
+            <h1>Hello {user.username}, welcome back master </h1>
 
             <Form onSubmit={handleFormSubmission}>
               <Form.Group controlId="formBasic">
@@ -122,19 +128,22 @@ function HomePage(props) {
                   Here you enter presents, gambling, etc.
                 </Form.Text>
               </Form.Group>
-
+              {/* 
               <Button variant="primary" type="submit">
                 Submit
               </Button>
             </Form>
+            <span></span>
+            <span></span>
+            <span></span>
 
-            <Form onSubmit={handleFormSubmission}>
+            <Form onSubmit={handleFormSubmission}> */}
               <Form.Group controlId="formBasic">
                 <Form.Label>Fixed Expenses</Form.Label>
                 <Form.Control
                   type="number"
                   placeholder="Ex: $200.00"
-                  name="expenses"
+                  name="fixed"
                   value={fixed}
                   onChange={handleInputChange}
                 />

@@ -8,7 +8,8 @@ const Navbar = (props) => {
   return (
     <nav>
       <Link to={PATHS.HOMEPAGE} className="nav__projectName">
-        {CONSTS.CAPITALIZED_APP} - created with IronLauncher
+        {" "}
+        Home
       </Link>
 
       <div className="nav__authLinks">
@@ -17,9 +18,9 @@ const Navbar = (props) => {
             <Link to={PATHS.PROTECTEDTABLE} className="authLink">
               Mi Budget
             </Link>
-            <Link to={PATHS.PROTECTEDPAGE} className="authLink">
+            {/* <Link to={PATHS.PROTECTEDPAGE} className="authLink">
               Protected Page
-            </Link>
+            </Link> */}
             <Link to={PATHS.PROFILE_PAGE} className="authLink">
               Profile
             </Link>

@@ -2,6 +2,26 @@ import React, { useState } from "react";
 // import UpdatePassword from "../components/Profile/UpdatePassword";
 // import UpdateProfile from "../components/Profile/UpdateProfile";
 
+function UpdatePassword() {
+  return (
+    <form>
+      <div>
+        <label>Current Password</label>
+        <input name="password" placeholder="Current Password" />
+      </div>
+      <div>
+        <label>New Password</label>
+        <input name="password" placeholder="New Password" />
+      </div>
+      <div>
+        <label>Confirm New Password</label>
+        <input name="password" placeholder="Confirm New Password" />
+      </div>
+      <button>Update das password</button>
+    </form>
+  );
+}
+
 export default function ProfilePage(props) {
   const [displayUpdateProfile, setDisplayUpdateProfile] = useState(false);
   const [displayUpdatePassword, setDisplayUpdatePassword] = useState(false);
@@ -34,7 +54,7 @@ export default function ProfilePage(props) {
           }}
         <br />
         <button onClick={passwordToggle}>Update Password</button>
-        {/* {displayUpdatePassword && <UpdatePassword />} */}
+        {displayUpdatePassword && <UpdatePassword />}
         <br />
         <button>Delete Account</button>
       </div>

@@ -1,7 +1,7 @@
 import React from "react";
 // import Table from "./Table";
 // import { Link } from "react-router-dom";
-import BudgetInfo from "../BudgetInfo";
+import BudgetInfo from "./BudgetInfo";
 
 function Buttons(props) {
   const [budgetArray, setBudgetArray] = React.useState([]);

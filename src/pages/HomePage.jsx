@@ -67,10 +67,10 @@ function HomePage(props) {
   return (
     <div className="App">
       <header className="App-header">
-        {user ? (
+        {props.user ? (
           <>
             <h1>Hey, I'm logged in</h1>
-            <h1>Hello {user.username}, welcome back master </h1>
+            <h1>Hello {props.user.username}, welcome back master </h1>
 
             <Form onSubmit={handleFormSubmission}>
               <Form.Group controlId="formBasic">

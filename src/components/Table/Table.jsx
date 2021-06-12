@@ -1,11 +1,12 @@
 import React from "react";
+import DeleteInfo from "../Table/DeleteInfo";
 
 function Table({ singleMonthData }) {
-  const { month, expenses, income } = singleMonthData;
+  const { month, expenses, income, _id } = singleMonthData;
   const { passive, active, otherIncome } = income;
   const { fixed, otherExpenses, periodic, variable } = expenses;
 
-  console.log("Table**", income);
+  console.log("Table**", _id);
   //   const singleMonthDet = props.find(
   //     (singMonth) => singMonth._id === props.match.params.id
   //   );
@@ -102,6 +103,7 @@ function Table({ singleMonthData }) {
         <tr></tr>
         <tr></tr>
       </table>
+      <DeleteInfo singleMonthId={_id} />
     </section>
   );
   //   );

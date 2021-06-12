@@ -1,5 +1,5 @@
 import React from "react";
-import Table from "../components/Table/Table";
+import Table from "../Table/Table";
 
 function BudgetInfo({ monthInfo }) {
   const [tableState, setTableState] = React.useState(false);
@@ -9,7 +9,9 @@ function BudgetInfo({ monthInfo }) {
   }
   return (
     <div>
-      <button onClick={tableToggle}>{monthInfo.month}</button>
+      <>
+        <button onClick={tableToggle}>{monthInfo.month}</button>
+      </>
       {tableState && <Table singleMonthData={monthInfo} />}
     </div>
   );

@@ -43,10 +43,13 @@ export function getData(id) {
     .catch(internalServerError);
 }
 
-export function getIndividualBudget(id) {
-  console.log(id);
-  return dataService
-    .get(`table/single/${id}`)
+export function removeSingleBudget(id) {
+  console.log("delete Id:", id.singleMonthId);
+  axios
+    .delete(
+      `${process.env.REACT_APP_SERVER_URL}/protected/delete/${id.singleMonthId}`
+    )
+    // .delete(`delete/${id}`)
     .then(successStatus)
     .catch(internalServerError);
 }

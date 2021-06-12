@@ -4,15 +4,15 @@ import Table from "../components/Table/Table";
 import Buttons from "../components/Table/Buttons";
 import { Route } from "react-router-dom";
 
-import axios from "axios";
-import { Link } from "react-router-dom";
-import * as PATHS from "../utils/paths";
+// import axios from "axios";
+// import { Link } from "react-router-dom";
+// import * as PATHS from "../utils/paths";
 
 function ProtectedTable(props) {
   const { user } = props;
   const [budgetArray, setBudgetArray] = React.useState([]);
 
-  const [showButtons, setShowButtons] = React.useState(false);
+  // const [showButtons, setShowButtons] = React.useState(false);
 
   // function buttonsToggle() {
   //   setShowButtons(!showButtons);

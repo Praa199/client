@@ -6,7 +6,7 @@ import HomePage from "./pages/HomePage";
 import LogIn from "./pages/LogIn";
 import ProtectedPage from "./pages/ProtectedPage";
 import ProtectedTable from "./pages/ProtectedTable";
-import ProfilePage from "./pages/ProfilePage";
+// import ProfilePage from "./pages/ProfilePage";
 import Signup from "./pages/Signup";
 import NormalRoute from "./routing-components/NormalRoute";
 import ProtectedRoute from "./routing-components/ProtectedRoute";

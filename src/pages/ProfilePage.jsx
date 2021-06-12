@@ -25,7 +25,7 @@ function UpdatePassword() {
 export default function ProfilePage(props) {
   const [displayUpdateProfile, setDisplayUpdateProfile] = useState(false);
   const [displayUpdatePassword, setDisplayUpdatePassword] = useState(false);
-  const { user, authenticate } = props;
+  const { user } = props;
 
   function profileToggle() {
     setDisplayUpdateProfile(!displayUpdateProfile);
@@ -40,11 +40,7 @@ export default function ProfilePage(props) {
   return (
     <div>
       <h1>Hi, {user.username}</h1>
-      <img
-        src={user.profilePic}
-        width="200px"
-        alt={`Profile picture for ${user.username}`}
-      />
+      <img src={user.profilePic} width="200px" alt={`for ${user.username}`} />
       <div>
         <button onClick={profileToggle}>Update profile</button>
         {/* {displayUpdateProfile ? <UpdateProfile /> : null} */}

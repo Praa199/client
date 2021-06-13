@@ -52,15 +52,29 @@ function HomePage(props) {
       periodic,
       otherExpenses,
     };
-    sendData(data).then((res) => {
-      if (!res.status) {
-        // unsuccessful signup
-        console.error("data input was unsuccessful: ", res);
-        return setError({
-          message: "data input was unsuccessful! Please check the console.",
-        });
-      }
-      console.log("succesfully sent data to backend", res);
+    if (
+      month.length &&
+      passive >= 0 &&
+      active >= 0 &&
+      otherIncome >= 0 &&
+      fixed >= 0 &&
+      variable >= 0 &&
+      periodic >= 0 &&
+      otherExpenses >= 0
+    ) {
+      sendData(data).then((res) => {
+        if (!res.status) {
+          // unsuccessful signup
+          console.error("data input was unsuccessful: ", res);
+          return setError({
+            message: "data input was unsuccessful! Please check the console.",
+          });
+        }
+        console.log("succesfully sent data to backend", res);
+      });
+    }
+    return setError({
+      message: "Empty input fields must be 0",
     });
   }
 
@@ -128,16 +142,6 @@ function HomePage(props) {
                   Here you enter presents, gambling, etc.
                 </Form.Text>
               </Form.Group>
-              {/* 
-              <Button variant="primary" type="submit">
-                Submit
-              </Button>
-            </Form>
-            <span></span>
-            <span></span>
-            <span></span>
-
-            <Form onSubmit={handleFormSubmission}> */}
               <Form.Group controlId="formBasic">
                 <Form.Label>Fixed Expenses</Form.Label>
                 <Form.Control
@@ -193,6 +197,12 @@ function HomePage(props) {
                   Here you enter gambling, charity donations, etc.
                 </Form.Text>
               </Form.Group>
+              {error && (
+                <div className="error-block">
+                  <p>There was an error submiting the form:</p>
+                  <p>{error.message}</p>
+                </div>
+              )}
 
               <Button variant="primary" type="submit">
                 Submit

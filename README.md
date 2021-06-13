@@ -26,6 +26,7 @@ This is an OPA that recieves and calculates personal budgets.
 - ~~Create Backend
 - ~~Deploy
 - ~~Make pizza
+- ~~show error if input form is empty
 - create basic profile
 - return the sum of values
 - return result of subtracting both sums

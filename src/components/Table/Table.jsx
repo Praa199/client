@@ -1,7 +1,7 @@
 import React from "react";
 import DeleteInfo from "../Table/DeleteInfo";
 
-function Table({ singleMonthData }) {
+function Table({ singleMonthData, handleDelete }) {
   const { month, expenses, income, _id } = singleMonthData;
   const { passive, active, otherIncome } = income;
   const { fixed, otherExpenses, periodic, variable } = expenses;
@@ -103,7 +103,7 @@ function Table({ singleMonthData }) {
         <tr></tr>
         <tr></tr>
       </table>
-      <DeleteInfo singleMonthId={_id} />
+      <DeleteInfo singleMonthId={_id} handleDelete={() => handleDelete(_id)} />
     </section>
   );
   //   );

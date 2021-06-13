@@ -1,7 +1,7 @@
 import React from "react";
 import Table from "../Table/Table";
 
-function BudgetInfo({ monthInfo }) {
+function BudgetInfo({ monthInfo, handleDelete }) {
   const [tableState, setTableState] = React.useState(false);
 
   function tableToggle() {
@@ -12,7 +12,9 @@ function BudgetInfo({ monthInfo }) {
       <>
         <button onClick={tableToggle}>{monthInfo.month}</button>
       </>
-      {tableState && <Table singleMonthData={monthInfo} />}
+      {tableState && (
+        <Table singleMonthData={monthInfo} handleDelete={() => handleDelete} />
+      )}
     </div>
   );
 }

@@ -12,6 +12,7 @@ function ProtectedTable(props) {
   const { user } = props;
   const [budgetArray, setBudgetArray] = React.useState([]);
 
+  // export function removeSingleMonth(params) {}
   // const [showButtons, setShowButtons] = React.useState(false);
 
   // function buttonsToggle() {
@@ -34,12 +35,18 @@ function ProtectedTable(props) {
     return;
   }
 
+  function handleDelete(id) {
+    // axios.post(...)
+    let items = budgetArray.filter((item) => item.id !== id);
+    setBudgetArray({ items });
+  }
+
   return (
     <>
-      <Buttons budgetArray={budgetArray} />
+      <Buttons budgetArray={budgetArray} handleDelete={handleDelete} />
       {/* <button onClick={buttonsToggle}>Click here to fetch your data</button>
       {showButtons && <Buttons budgetArray={budgetArray} />} */}
-      <Route exact path="/protected/table/:id" component={Table} />
+      {/* <Route exact path="/protected/table/:id" component={Table} /> */}
     </>
   );
 }

@@ -1,4 +1,4 @@
-# Backlog Quest
+# mi Budget
 
 <br>
 
@@ -27,11 +27,13 @@ This is an OPA that recieves and calculates personal budgets.
 - ~~Deploy
 - ~~Make pizza
 - ~~show error if input form is empty
+- remove single month from state when deleting
 - create basic profile
 - return the sum of values
 - return result of subtracting both sums
 - show a year table with all months together
 - capitalize first letter of each month
+- filter diferently when creating budget.model and not by month only
 
 # Nice to Have
 

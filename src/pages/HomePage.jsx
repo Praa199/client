@@ -53,7 +53,7 @@ function HomePage(props) {
       otherExpenses,
     };
     if (
-      month.length &&
+      month.length >= 3 &&
       passive >= 0 &&
       active >= 0 &&
       otherIncome >= 0 &&
@@ -72,10 +72,11 @@ function HomePage(props) {
         }
         console.log("succesfully sent data to backend", res);
       });
+    } else {
+      return setError({
+        message: "Empty input fields must be 0",
+      });
     }
-    return setError({
-      message: "Empty input fields must be 0",
-    });
   }
 
   return (

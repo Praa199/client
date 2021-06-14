@@ -4,17 +4,19 @@ import { removeSingleBudget } from "../../services/data.input";
 
 function removeBudget(id) {
   removeSingleBudget(id);
-  // handleDelete;
+  // handleDelete(id);
 }
 
-function DeleteInfo({ singleMonthId, handleDelete }) {
+function DeleteInfo({ singleMonthId, handleDelete, tableToggle }) {
   function deletion() {
+    console.log(tableToggle);
     removeBudget({ singleMonthId });
-    handleDelete();
+    tableToggle();
+    handleDelete(singleMonthId);
   }
   return (
     <div>
-      <button onClick={deletion()}>Remove</button>
+      <button onClick={() => deletion()}>Remove</button>
     </div>
   );
 }

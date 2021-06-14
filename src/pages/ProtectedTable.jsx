@@ -35,15 +35,18 @@ function ProtectedTable(props) {
     return;
   }
 
-  function handleDelete(id) {
+  function handleDelete(_id) {
     // axios.post(...)
-    let items = budgetArray.filter((item) => item.id !== id);
-    setBudgetArray({ items });
+    console.log("handleDelete(id)***", _id);
+    //   let items = budgetArray.find((item) => item.id !== _id);
+    //   console.log("handleDelete(id) result***", items);
+
+    //   return setBudgetArray({ items });
   }
 
   return (
     <>
-      <Buttons budgetArray={budgetArray} handleDelete={handleDelete} />
+      <Buttons budgetArray={budgetArray} handleDelete={() => handleDelete()} />
       {/* <button onClick={buttonsToggle}>Click here to fetch your data</button>
       {showButtons && <Buttons budgetArray={budgetArray} />} */}
       {/* <Route exact path="/protected/table/:id" component={Table} /> */}

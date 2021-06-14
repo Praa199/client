@@ -43,6 +43,7 @@ export function getData(id) {
     .catch(internalServerError);
 }
 
+//called from DeleteInfo.jsx 6
 export function removeSingleBudget(id) {
   console.log("delete Id:", id.singleMonthId);
   axios

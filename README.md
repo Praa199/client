@@ -27,7 +27,10 @@ This is an OPA that recieves and calculates personal budgets.
 - ~~Deploy
 - ~~Make pizza
 - ~~show error if input form is empty
-- remove single month from state when deleting
+- ~remove single month from state when deleting
+- update table when deletion has been made
+- edit table individualy
+- clear form after submit
 - create basic profile
 - return the sum of values
 - return result of subtracting both sums

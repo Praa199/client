@@ -3,24 +3,27 @@ import React from "react";
 // import { Link } from "react-router-dom";
 import BudgetInfo from "./BudgetInfo";
 
-function Buttons(props) {
-  const [budgetArray, setBudgetArray] = React.useState([]);
+function Buttons({ budgetArray, handleDelete }) {
+  const [newBudgetArray, setNewBudgetArray] = React.useState([]);
   //   const [showTable, setShowTable] = React.useState(false);
 
   React.useEffect(() => {
-    setBudgetArray(props.budgetArray);
-    console.log(props.budgetArray);
+    setNewBudgetArray(budgetArray);
+    console.log(budgetArray);
 
     return () => console.log("Bye bye eeh");
-  }, [props.budgetArray]);
+  }, [budgetArray]);
 
-  console.log("buttons**", budgetArray);
+  console.log("buttons**", newBudgetArray);
   return (
     <div>
-      <h1>tables</h1>
-      {budgetArray.map((singleMonth) => (
+      <h1>Months</h1>
+      {newBudgetArray.map((singleMonth) => (
         <>
-          <BudgetInfo monthInfo={singleMonth} />
+          <BudgetInfo
+            monthInfo={singleMonth}
+            handleDelete={() => handleDelete()}
+          />
           {/* <button onClick={tableToggle}>{singleMonth.month}</button>
           {showTable && <Table singleMonthData={singleMonth} />} */}
         </>

@@ -5,7 +5,7 @@ function BudgetInfo({ monthInfo, handleDelete }) {
   const [tableState, setTableState] = React.useState(false);
 
   function tableToggle() {
-    setTableState(!tableState);
+    tableState ? setTableState(false) : setTableState(true);
   }
   return (
     <div>
@@ -13,7 +13,11 @@ function BudgetInfo({ monthInfo, handleDelete }) {
         <button onClick={tableToggle}>{monthInfo.month}</button>
       </>
       {tableState && (
-        <Table singleMonthData={monthInfo} handleDelete={() => handleDelete} />
+        <Table
+          singleMonthData={monthInfo}
+          tableToggle={() => tableToggle()}
+          handleDelete={() => handleDelete()}
+        />
       )}
     </div>
   );

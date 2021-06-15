@@ -3,7 +3,7 @@ import React from "react";
 // import { Link } from "react-router-dom";
 import BudgetInfo from "./BudgetInfo";
 
-function Buttons({ budgetArray, handleDelete }) {
+function Buttons({ budgetArray, handleDelete, setBudgetArray }) {
   const [newBudgetArray, setNewBudgetArray] = React.useState([]);
   //   const [showTable, setShowTable] = React.useState(false);
 
@@ -23,6 +23,8 @@ function Buttons({ budgetArray, handleDelete }) {
           <BudgetInfo
             monthInfo={singleMonth}
             handleDelete={() => handleDelete()}
+            setBudgetArray={setBudgetArray}
+            budgetArray={budgetArray}
           />
           {/* <button onClick={tableToggle}>{singleMonth.month}</button>
           {showTable && <Table singleMonthData={singleMonth} />} */}

@@ -4,15 +4,32 @@ import { removeSingleBudget } from "../../services/data.input";
 
 function removeBudget(id) {
   removeSingleBudget(id);
-  // handleDelete(id);
 }
 
-function DeleteInfo({ singleMonthId, handleDelete, tableToggle }) {
+function DeleteInfo({
+  singleMonthId,
+  handleDelete,
+  tableToggle,
+  setBudgetArray,
+  budgetArray,
+}) {
+  // const [editedBudgetArray, setEditedBudgetArray] = React.useState([]);
+
+  function filterParentState() {
+    const obj = budgetArray.filter(
+      (singMonth) => singMonth._id !== singleMonthId
+    );
+    setBudgetArray(obj);
+    console.log(obj);
+    // return obj;
+  }
+
   function deletion() {
     console.log(tableToggle);
     removeBudget({ singleMonthId });
+    filterParentState();
     tableToggle();
-    handleDelete(singleMonthId);
+    // setEditedBudgetArray(budgetArray);
   }
   return (
     <div>

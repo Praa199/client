@@ -46,7 +46,11 @@ function ProtectedTable(props) {
 
   return (
     <>
-      <Buttons budgetArray={budgetArray} handleDelete={() => handleDelete()} />
+      <Buttons
+        budgetArray={budgetArray}
+        handleDelete={() => handleDelete()}
+        setBudgetArray={setBudgetArray}
+      />
       {/* <button onClick={buttonsToggle}>Click here to fetch your data</button>
       {showButtons && <Buttons budgetArray={budgetArray} />} */}
       {/* <Route exact path="/protected/table/:id" component={Table} /> */}

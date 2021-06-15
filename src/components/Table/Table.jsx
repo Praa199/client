@@ -1,12 +1,18 @@
 import React from "react";
 import DeleteInfo from "../Table/DeleteInfo";
 
-function Table({ singleMonthData, handleDelete, tableToggle }) {
+function Table({
+  singleMonthData,
+  handleDelete,
+  tableToggle,
+  setBudgetArray,
+  budgetArray,
+}) {
   const { month, expenses, income, _id } = singleMonthData;
   const { passive, active, otherIncome } = income;
   const { fixed, otherExpenses, periodic, variable } = expenses;
 
-  console.log("Table**", _id);
+  console.log("Table**", singleMonthData);
   //   const singleMonthDet = props.find(
   //     (singMonth) => singMonth._id === props.match.params.id
   //   );
@@ -21,8 +27,18 @@ function Table({ singleMonthData, handleDelete, tableToggle }) {
   //     return () => console.log("Bye bye eeh");
   //   }, []);
 
+  function getTotalCosts(obj) {
+    var sum = 0;
+    for (var el in obj) {
+      if (obj.hasOwnProperty(el)) {
+        sum += parseFloat(obj[el]);
+      }
+    }
+    return sum;
+  }
+
   //   const getTotalCosts = (item) => {
-  //     return props.budgetObject.reduce((total, item) => {
+  //     return income.reduce((total, item) => {
   //       return total + Number(item.price);
   //     }, 0);
   //   };
@@ -61,6 +77,7 @@ function Table({ singleMonthData, handleDelete, tableToggle }) {
         <tr>
           <td> TOTAL </td>
           <td> </td>
+          <td> $ {getTotalCosts(income)}.00 </td>
           <td> </td>
 
           <td> </td>
@@ -94,6 +111,7 @@ function Table({ singleMonthData, handleDelete, tableToggle }) {
         <tr>
           <td> TOTAL </td>
           <td> </td>
+          <td> $ {getTotalCosts(expenses)}.00 </td>
           <td> </td>
 
           <td> </td>
@@ -107,6 +125,8 @@ function Table({ singleMonthData, handleDelete, tableToggle }) {
         singleMonthId={_id}
         tableToggle={() => tableToggle()}
         handleDelete={() => handleDelete(_id)}
+        setBudgetArray={setBudgetArray}
+        budgetArray={budgetArray}
       />
     </section>
   );

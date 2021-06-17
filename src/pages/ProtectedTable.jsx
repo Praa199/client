@@ -35,9 +35,9 @@ function ProtectedTable(props) {
     return;
   }
 
-  function handleDelete(_id) {
+  function handleUpdate(_id) {
     // axios.post(...)
-    console.log("handleDelete(id)***", _id);
+    console.log("handleUpdate(id)***", _id);
     //   let items = budgetArray.find((item) => item.id !== _id);
     //   console.log("handleDelete(id) result***", items);
 
@@ -48,8 +48,8 @@ function ProtectedTable(props) {
     <>
       <Buttons
         budgetArray={budgetArray}
-        handleDelete={() => handleDelete()}
         setBudgetArray={setBudgetArray}
+        handleUpdate={() => handleUpdate()}
       />
       {/* <button onClick={buttonsToggle}>Click here to fetch your data</button>
       {showButtons && <Buttons budgetArray={budgetArray} />} */}

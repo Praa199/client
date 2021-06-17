@@ -35,6 +35,14 @@ export function sendData(data) {
     .catch(internalServerError);
 }
 
+export function updateData(data) {
+  console.log("updated data**", data);
+  // return dataService
+  //   .post("/update", data)
+  //   .then(successStatus)
+  //   .catch(internalServerError);
+}
+
 export function getData(id) {
   console.log(id);
   return dataService

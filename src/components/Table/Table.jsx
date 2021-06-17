@@ -1,12 +1,13 @@
 import React from "react";
 import DeleteInfo from "../Table/DeleteInfo";
+import EditBudgetButton from "./EditBudgetButton";
 
 function Table({
   singleMonthData,
-  handleDelete,
   tableToggle,
   setBudgetArray,
   budgetArray,
+  editTable,
 }) {
   const { month, expenses, income, _id } = singleMonthData;
   const { passive, active, otherIncome } = income;
@@ -121,13 +122,18 @@ function Table({
         <tr></tr>
         <tr></tr>
       </table>
-      <DeleteInfo
-        singleMonthId={_id}
-        tableToggle={() => tableToggle()}
-        handleDelete={() => handleDelete(_id)}
-        setBudgetArray={setBudgetArray}
-        budgetArray={budgetArray}
-      />
+      <span>
+        <EditBudgetButton
+          tableToggle={() => tableToggle()}
+          editTable={() => editTable()}
+        />
+        <DeleteInfo
+          singleMonthId={_id}
+          tableToggle={() => tableToggle()}
+          setBudgetArray={setBudgetArray}
+          budgetArray={budgetArray}
+        />
+      </span>
     </section>
   );
   //   );

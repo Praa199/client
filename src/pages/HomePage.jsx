@@ -84,8 +84,8 @@ function HomePage(props) {
       <header className="App-header">
         {props.user ? (
           <>
-            <h1>Hey, I'm logged in</h1>
-            <h1>Hello {props.user.username}, welcome back master </h1>
+            <h1>Hey {props.user.username}, be welcome</h1>
+            <h3> Please provide with your data </h3>
 
             <Form onSubmit={handleFormSubmission}>
               <Form.Group controlId="formBasic">

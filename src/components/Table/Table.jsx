@@ -7,7 +7,7 @@ function Table({
   tableToggle,
   setBudgetArray,
   budgetArray,
-  editTable,
+  editTableToggle,
 }) {
   const { month, expenses, income, _id } = singleMonthData;
   const { passive, active, otherIncome } = income;
@@ -125,7 +125,7 @@ function Table({
       <span>
         <EditBudgetButton
           tableToggle={() => tableToggle()}
-          editTable={() => editTable()}
+          editTableToggle={() => editTableToggle()}
         />
         <DeleteInfo
           singleMonthId={_id}

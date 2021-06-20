@@ -1,62 +1,46 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { updateData } from "../../services/data.input";
+import { useForm } from "react-hook-form";
 
 function EditInfo({
   singleMonthData,
-  saveUpdatedInfo,
   //   handleUpdate,
   setBudgetArray,
   budgetArray,
+  editTableToggle,
 }) {
-  const [form, setForm] = useState({
-    month: "",
-    income: {
-      passive: 0,
-      active: 0,
-      otherIncome: 0,
-    },
-    expenses: {
-      fixed: 0,
-      variable: 0,
-      periodic: 0,
-      otherExpenses: 0,
-    },
-  });
-  const { month, expenses, income, _id } = singleMonthData;
+  const { month, expenses, income, _id, user } = singleMonthData;
   const { passive, active, otherIncome } = income;
   const { fixed, otherExpenses, periodic, variable } = expenses;
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
   const [error, setError] = useState(null);
 
-  function handleInputChange(event) {
-    const { name, value } = event.target;
+  const onSubmit = (data) => {
+    editTableToggle();
 
-    return setForm({ ...form, [name]: value });
-  }
-
-  function handleFormSubmission(event) {
-    event.preventDefault();
-    const data = {
-      month,
-      passive,
-      active,
-      otherIncome,
-      fixed,
-      variable,
-      periodic,
-      otherExpenses,
-    };
+    data.id = _id;
+    data.user = user;
+    // console.log(data);
     if (
-      month.length >= 3 &&
-      passive >= 0 &&
-      active >= 0 &&
-      otherIncome >= 0 &&
-      fixed >= 0 &&
-      variable >= 0 &&
-      periodic >= 0 &&
-      otherExpenses >= 0
+      data.month.length >= 3 &&
+      data.passive >= 0 &&
+      data.active >= 0 &&
+      data.otherIncome >= 0 &&
+      data.fixed >= 0 &&
+      data.variable >= 0 &&
+      data.periodic >= 0 &&
+      data.otherExpenses >= 0
     ) {
       updateData(data).then((res) => {
+        console.log("submit update", data);
         if (!res.status) {
           // unsuccessful signup
           console.error("data input was unsuccessful: ", res);
@@ -71,7 +55,52 @@ function EditInfo({
         message: "Empty input fields must be 0",
       });
     }
+  };
+
+  function filterParentState() {
+    const obj = budgetArray.filter((singMonth) => singMonth._id !== _id);
+    setBudgetArray(obj);
+    console.log(obj);
+    // return obj;
   }
+
+  //   const [form, setForm] = useState({
+  //     month: "",
+  //     income: {
+  //       passive: income.passive,
+  //       active: income.active,
+  //       otherIncome: income.otherIncome,
+  //     },
+  //     expenses: {
+  //       fixed: expenses.fixed,
+  //       variable: expenses.variable,
+  //       periodic: expenses.periodic,
+  //       otherExpenses: expenses.otherExpenses,
+  //     },
+  //   });
+  //   const [error, setError] = useState(null);
+
+  //   function handleInputChange(event) {
+  //     console.log("input change");
+  //     const { name, value } = event.target;
+
+  //     return setForm({ ...form, [name]: value });
+  //   }
+
+  //   function handleFormSubmission(event) {
+  //     event.preventDefault();
+  //     const data = {
+  //       month,
+  //       passive,
+  //       active,
+  //       otherIncome,
+  //       fixed,
+  //       variable,
+  //       periodic,
+  //       otherExpenses,
+  //     };
+  //
+  //   }
 
   //   function handleUpdate() {
   //     saveUpdatedInfo();
@@ -80,15 +109,10 @@ function EditInfo({
   return (
     <div>
       <h1>Table</h1>
-      <Form onSubmit={handleFormSubmission}>
+      <Form onSubmit={handleSubmit(onSubmit)}>
         <h3>
           {" "}
-          <Form.Control
-            type="text"
-            name="month"
-            value={month}
-            onChange={handleInputChange}
-          />
+          <Form.Control defaultValue={month} {...register("month")} />
         </h3>
         <span></span>
         <table striped bordered hover variant="dark">
@@ -102,10 +126,8 @@ function EditInfo({
             <td>
               {" "}
               <Form.Control
-                type="number"
-                name="active"
-                value={active}
-                onChange={handleInputChange}
+                defaultValue={active}
+                {...register("active")}
               />{" "}
             </td>
           </tr>
@@ -114,10 +136,8 @@ function EditInfo({
             <td>
               {" "}
               <Form.Control
-                type="number"
-                name="passive"
-                value={passive}
-                onChange={handleInputChange}
+                defaultValue={passive}
+                {...register("passive")}
               />{" "}
             </td>
           </tr>
@@ -126,10 +146,8 @@ function EditInfo({
             <td>
               {" "}
               <Form.Control
-                type="number"
-                name="otherIncome"
-                value={otherIncome}
-                onChange={handleInputChange}
+                defaultValue={otherIncome}
+                {...register("otherIncome")}
               />
             </td>
           </tr>
@@ -150,35 +168,20 @@ function EditInfo({
           <tr>
             <td> FIXED </td>
             <td>
-              <Form.Control
-                type="number"
-                name="fixed"
-                value={fixed}
-                onChange={handleInputChange}
-              />
+              <Form.Control defaultValue={fixed} {...register("fixed")} />
             </td>
           </tr>
           <tr>
             <td> VARIABLE </td>
             <td>
               {" "}
-              <Form.Control
-                type="number"
-                name="variable"
-                value={variable}
-                onChange={handleInputChange}
-              />
+              <Form.Control defaultValue={variable} {...register("variable")} />
             </td>
           </tr>
           <tr>
             <td> PERIODIC </td>
             <td>
-              <Form.Control
-                type="number"
-                name="periodic"
-                value={periodic}
-                onChange={handleInputChange}
-              />
+              <Form.Control defaultValue={periodic} {...register("periodic")} />
             </td>
           </tr>
           <tr>
@@ -186,10 +189,8 @@ function EditInfo({
             <td>
               {" "}
               <Form.Control
-                type="number"
-                name="otherExpenses"
-                value={otherExpenses}
-                onChange={handleInputChange}
+                defaultValue={otherExpenses}
+                {...register("otherExpenses")}
               />
             </td>
           </tr>

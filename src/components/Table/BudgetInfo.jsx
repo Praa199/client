@@ -7,25 +7,20 @@ function BudgetInfo({
   monthInfo,
   setBudgetArray,
   budgetArray,
-  // editTable,
+  // editTableToggle,
   handleUpdate,
 }) {
   const [tableState, setTableState] = React.useState(false);
   const [editInfoState, setEditInfoState] = React.useState(false);
 
   function tableToggle() {
-    tableState ? setTableState(false) : setTableState(true);
+    !tableState ? setTableState(true) : setTableState(false);
   }
 
-  function editTable() {
-    editInfoState ? setEditInfoState(false) : setEditInfoState(true);
+  function editTableToggle() {
+    !editInfoState ? setEditInfoState(true) : setEditInfoState(false);
 
     console.log("this button edits the table");
-  }
-
-  function saveUpdatedInfo() {
-    console.log("data was saved");
-    handleUpdate();
   }
 
   return (
@@ -41,16 +36,16 @@ function BudgetInfo({
           tableToggle={() => tableToggle()}
           setBudgetArray={setBudgetArray}
           budgetArray={budgetArray}
-          editTable={() => editTable()}
+          editTableToggle={() => editTableToggle()}
         />
       )}
 
       {editInfoState && (
         <EditInfo
           singleMonthData={monthInfo}
-          saveUpdatedInfo={saveUpdatedInfo()}
           setBudgetArray={setBudgetArray}
           budgetArray={budgetArray}
+          editTableToggle={() => editTableToggle()}
         />
       )}
     </div>

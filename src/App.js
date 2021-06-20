@@ -91,12 +91,12 @@ export default function App() {
           component={ProtectedTable}
           user={user}
         />
-        <ProtectedRoute
+        {/* <ProtectedRoute
           exact
           path={PATHS.PROFILE_PAGE}
           component={ProfilePage}
           user={user}
-        />
+        /> */}
       </Switch>
     </div>
   );

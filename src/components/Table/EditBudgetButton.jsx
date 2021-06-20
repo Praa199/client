@@ -1,9 +1,9 @@
 import React from "react";
 
-function EditBudgetButton({ tableToggle, editTable }) {
+function EditBudgetButton({ tableToggle, editTableToggle }) {
   function clickListener() {
     tableToggle();
-    editTable();
+    editTableToggle();
   }
 
   return (

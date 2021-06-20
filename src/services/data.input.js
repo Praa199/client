@@ -36,11 +36,11 @@ export function sendData(data) {
 }
 
 export function updateData(data) {
-  console.log("updated data**", data);
-  // return dataService
-  //   .post("/update", data)
-  //   .then(successStatus)
-  //   .catch(internalServerError);
+  console.log("sent data**", data);
+  return dataService
+    .put(`/update/${data.id}`, data)
+    .then(successStatus)
+    .catch();
 }
 
 export function getData(id) {

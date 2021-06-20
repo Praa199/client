@@ -119,7 +119,6 @@ function EditInfo({
           <colgroup span="4"></colgroup>
           <tr>
             <th> INCOMES </th>
-            <th>Monthly</th>
           </tr>
           <tr>
             <td> ACTIVE </td>
@@ -163,7 +162,6 @@ function EditInfo({
           <colgroup span="4"></colgroup>
           <tr>
             <th> EXPENSES </th>
-            <th>Monthly</th>
           </tr>
           <tr>
             <td> FIXED </td>
@@ -204,6 +202,7 @@ function EditInfo({
           <tr></tr>
           <tr></tr>
         </table>
+
         <Button variant="primary" type="submit">
           Submit
         </Button>

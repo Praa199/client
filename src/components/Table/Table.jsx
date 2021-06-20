@@ -122,6 +122,24 @@ function Table({
         <tr></tr>
         <tr></tr>
       </table>
+      <table striped bordered hover variant="dark">
+        <colgroup span="4"></colgroup>
+        <tr>
+          <th> DIFERENCE </th>
+        </tr>
+        <tr>
+          <td> Total Incomes </td>
+          <td>{getTotalCosts(income)}</td>
+        </tr>
+        <tr>
+          <td>Total Expenses </td>
+          <td>{getTotalCosts(expenses)} </td>
+        </tr>
+        <tr>
+          <td> Diference </td>
+          <td>{getTotalCosts(income) - getTotalCosts(expenses)}</td>
+        </tr>
+      </table>
       <span>
         <EditBudgetButton
           tableToggle={() => tableToggle()}

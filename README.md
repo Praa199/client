@@ -28,15 +28,15 @@ This is an OPA that recieves and calculates personal budgets.
 - ~~Make pizza
 - ~~show error if input form is empty
 - ~remove single month from state when deleting
-- update table when deletion has been made
-- edit table individualy
+- ~~update table when deletion has been made
+- ~~edit table individualy
+- ~~filter diferently when creating budget.model and not by month only
+- ~~return the sum of values
+- ~~return result of subtracting both sums
 - clear form after submit
 - create basic profile
-- return the sum of values
-- return result of subtracting both sums
 - show a year table with all months together
 - capitalize first letter of each month
-- filter diferently when creating budget.model and not by month only
 
 # Nice to Have
 
@@ -51,15 +51,17 @@ This is an OPA that recieves and calculates personal budgets.
 
 ## React Router Routes (React App)
 
-| Path               | Component                | Permissions                | Behavior                                                      |
-| ------------------ | ------------------------ | -------------------------- | ------------------------------------------------------------- |
-| `/`                | HomePage                 | public `<Route>`           | Home page                                                     |
-| `/`                | Form                     | user only `<PrivateRoute>` | Input Form                                                    |
-| `/signup`          | SignupPage               | anon only `<AnonRoute>`    | Signup form, link to login, navigate to homepage after signup |
-| `/login`           | LoginPage                | anon only `<AnonRoute>`    | Login form, link to signup, navigate to homepage after login  |
-| `/logout`          | n/a                      | user only `<PrivateRoute>` | Navigate to homepage after logout, expire session             |
-| `/profile`         | Profile, Navbar, Buttons | user only `<PrivateRoute>` | Display profile and welcoming                                 |
-| `/protected/table` | NavBar, Buttons, Table   | user only `<PrivateRoute>` | Shows result of provided numbers                              |
+| Path               | Component              | Permissions                | Behavior                                                       |
+| ------------------ | ---------------------- | -------------------------- | -------------------------------------------------------------- |
+| `/`                | HomePage               | public `<Route>`           | Landing page                                                   |
+| `/`                | Form                   | user only `<PrivateRoute>` | Input Form                                                     |
+| `/signup`          | SignupPage             | user only `<AnonRoute>`    | Signup form, link to login, navigate to homepage after signup  |
+| `/login`           | LoginPage              | user only `<AnonRoute>`    | Login form, link to signup, navigate to homepage after login   |
+| `/logout`          | n/a                    | user only `<PrivateRoute>` | Navigate to Landing page after logout, expire session          |
+| `/protected/table` | NavBar, Buttons, Table | user only `<PrivateRoute>` | Shows result of provided numbers by month in a table, plus the |
+|                    | BudgetInfo, EditInfo,  |                            | sum ofsaid numbers. The table displays "edit" and "delete"     |
+|                    | EditBudgetButton,      |                            | buttons which modify the numbers.                              |
+|                    | DeleteInfo,            |                            |                                                                |
 
 ## Components
 
@@ -75,14 +77,29 @@ This is an OPA that recieves and calculates personal budgets.
 
 - Table
 
+- BudgetInfo
+
+- EditInfo
+
+- EditBudgetButton
+
+- DeleteInfo
+
 ## Services
 
 - Auth Service
 
-  - auth.login(user)
-  - auth.signup(user)
-  - auth.logout()
-  - auth.me()
+  - login(user)
+  - signup(user)
+  - logout()
+  - me()
+
+- Data Input Service
+
+  - sendData()
+  - updateData()
+  - getData()
+  - removeSingleBudget()
 
 <br>
 
@@ -141,11 +158,6 @@ Budget model
 <br>
 
 ## Links
-
-### Trello
-
-[Link to your trello board](https://trello.com/b/0k3HQK5N)
-or picture of your physical board
 
 ### Git
 

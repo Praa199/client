@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { login } from "../services/auth";
 import "./Signup";
+import "./auth.css";
 import * as CONSTS from "../utils/consts";
 import * as PATHS from "../utils/paths";
 
@@ -36,10 +37,12 @@ export default function LogIn({ authenticate, history }) {
   }
 
   return (
-    <div>
-      <h1>Log In</h1>
+    <div className="login">
+      <h1 className="login_h1">Log In</h1>
       <form onSubmit={handleFormSubmission} className="signup__form">
-        <label htmlFor="input-email">Username</label>
+        <label className="login_label" htmlFor="input-email">
+          Username
+        </label>
         <input
           id="input-email"
           type="text"
@@ -50,7 +53,9 @@ export default function LogIn({ authenticate, history }) {
           required
         />
 
-        <label htmlFor="input-password">Password</label>
+        <label className="login_label" htmlFor="input-password">
+          Password
+        </label>
         <input
           id="input-password"
           type="password"

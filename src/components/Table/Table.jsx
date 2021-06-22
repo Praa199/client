@@ -1,6 +1,7 @@
 import React from "react";
 import DeleteInfo from "../Table/DeleteInfo";
 import EditBudgetButton from "./EditBudgetButton";
+import "./Table.css";
 
 function Table({
   singleMonthData,
@@ -14,19 +15,6 @@ function Table({
   const { fixed, otherExpenses, periodic, variable } = expenses;
 
   console.log("Table**", singleMonthData);
-  //   const singleMonthDet = props.find(
-  //     (singMonth) => singMonth._id === props.match.params.id
-  //   );
-
-  //   const [budgetObject, setBudgetObject] = React.useState(null);
-  //   setBudgetObject(props.singleMonthData);
-
-  //   React.useEffect(() => {
-  //     setBudgetObject(props);
-  //     console.log("Table**", props);
-
-  //     return () => console.log("Bye bye eeh");
-  //   }, []);
 
   function getTotalCosts(obj) {
     var sum = 0;
@@ -38,109 +26,130 @@ function Table({
     return sum;
   }
 
-  //   const getTotalCosts = (item) => {
-  //     return income.reduce((total, item) => {
-  //       return total + Number(item.price);
-  //     }, 0);
-  //   };
-  //find object method
-
-  //   if (budgetObject) {
-  //     console.log(budgetObject);
-
   return (
-    <section>
-      <h1>Table</h1>
-      <h3>{month}</h3>
+    <>
+      <h1>{month}</h1>
       <span></span>
-      <table striped bordered hover variant="dark">
-        <colgroup span="4"></colgroup>
-        <tr>
-          <th> INCOMES </th>
-          <th>Monthly</th>
-          {/* <th> SUBTOTAL </th> */}
-        </tr>
-        <tr>
-          <td> ACTIVE </td>
-          <td> $ {active}.00 </td>
-          {/* <td> $ {getTotalCosts}.00 </td> */}
-        </tr>
-        <tr>
-          <td> PASSIVE </td>
-          <td> $ {passive}.00 </td>
-          {/* <td> $ {getTotalCosts}.00 </td> */}
-        </tr>
-        <tr>
-          <td> OTHER </td>
-          <td> $ {otherIncome}.00 </td>
-          {/* <td> $ {getTotalCosts}.00 </td> */}
-        </tr>
-        <tr>
-          <td> TOTAL </td>
-          <td> </td>
-          <td> $ {getTotalCosts(income)}.00 </td>
-          <td> </td>
+      <section className="table__container">
+        <div className="income_container">
+          <table
+            className="table__income"
+            striped
+            bordered
+            hover
+            variant="dark"
+          >
+            <colgroup span="4"></colgroup>
+            <tr>
+              <th className="th__green"> INCOMES </th>
+            </tr>
+            <tr>
+              <td className="td__green"> ACTIVE </td>
+              <td className="td__white"> $ {active}.00 </td>
+            </tr>
+            <tr>
+              <td className="td__green"> PASSIVE </td>
+              <td className="td__white"> $ {passive}.00 </td>
+            </tr>
+            <tr>
+              <td className="td__green"> OTHER </td>
+              <td className="td__white"> $ {otherIncome}.00 </td>
+            </tr>
+            <tr>
+              <td className="td__green"> TOTAL </td>
+              <td> </td>
+              <td className="td__white"> $ {getTotalCosts(income)}.00 </td>
+              <td> </td>
 
-          <td> </td>
-          <td> </td>
-          {/* <td> $ {getTotalCosts}.00 </td> */}
-        </tr>
-      </table>
-      <table striped bordered hover variant="dark">
-        <colgroup span="4"></colgroup>
-        <tr>
-          <th> EXPENSES </th>
-          <th>Monthly</th>
-          {/* <th> SUBTOTAL </th> */}
-        </tr>
-        <tr>
-          <td> FIXED </td>
-          <td> $ {fixed}.00 </td>
-        </tr>
-        <tr>
-          <td> VARIABLE </td>
-          <td> $ {variable}.00 </td>
-        </tr>
-        <tr>
-          <td> PERIODIC </td>
-          <td> $ {periodic}.00 </td>
-        </tr>
-        <tr>
-          <td> OTHER </td>
-          <td> $ {otherExpenses}.00 </td>
-        </tr>
-        <tr>
-          <td> TOTAL </td>
-          <td> </td>
-          <td> $ {getTotalCosts(expenses)}.00 </td>
-          <td> </td>
+              <td> </td>
+              <td> </td>
+            </tr>
+          </table>
+        </div>
+        <div className="expenses_container">
+          <table
+            className="table__expenses"
+            striped
+            bordered
+            hover
+            variant="dark"
+          >
+            <colgroup span="4"></colgroup>
+            <tr>
+              <th className="th__red"> EXPENSES </th>
+            </tr>
+            <tr>
+              <td className="td__red"> FIXED </td>
+              <td className="td__white"> $ {fixed}.00 </td>
+            </tr>
+            <tr>
+              <td className="td__red"> VARIABLE </td>
+              <td className="td__white"> $ {variable}.00 </td>
+            </tr>
+            <tr>
+              <td className="td__red"> PERIODIC </td>
+              <td className="td__white"> $ {periodic}.00 </td>
+            </tr>
+            <tr>
+              <td className="td__red"> OTHER </td>
+              <td className="td__white"> $ {otherExpenses}.00 </td>
+            </tr>
+            <tr>
+              <td className="td__red"> TOTAL </td>
+              <td> </td>
+              <td className="td__white"> $ {getTotalCosts(expenses)}.00 </td>
+              <td> </td>
 
-          <td> </td>
-          <td> </td>
-          {/* <td> $ {getTotalCosts}.00 </td> */}
-        </tr>
-        <tr></tr>
-        <tr></tr>
-      </table>
-      <table striped bordered hover variant="dark">
-        <colgroup span="4"></colgroup>
-        <tr>
-          <th> DIFERENCE </th>
-        </tr>
-        <tr>
-          <td> Total Incomes </td>
-          <td>{getTotalCosts(income)}</td>
-        </tr>
-        <tr>
-          <td>Total Expenses </td>
-          <td>{getTotalCosts(expenses)} </td>
-        </tr>
-        <tr>
-          <td> Diference </td>
-          <td>{getTotalCosts(income) - getTotalCosts(expenses)}</td>
-        </tr>
-      </table>
-      <span>
+              <td> </td>
+              <td> </td>
+            </tr>
+            <tr></tr>
+            <tr></tr>
+          </table>
+        </div>
+        <div className="difference_container">
+          <table
+            className="table__difference"
+            striped
+            bordered
+            hover
+            variant="dark"
+          >
+            <colgroup span="4"></colgroup>
+            <tr>
+              <th> DIFERENCE </th>
+            </tr>
+            <tr>
+              <td className="td__green"> Total Incomes </td>
+              <td className="td__white">{getTotalCosts(income)}</td>
+            </tr>
+            <tr>
+              <td className="td__red">Total Expenses </td>
+              <td className="td__white">{getTotalCosts(expenses)} </td>
+            </tr>
+            <tr>
+              <td> Diference </td>
+              <td className="td__white">
+                {getTotalCosts(income) - getTotalCosts(expenses)}
+              </td>
+
+              {/* {       if( (getTotalCosts(income) - getTotalCosts(expenses)) >= 1){
+return
+ <td className="td__green" > Diference </td>
+              <td> className="td__green"{getTotalCosts(income) - getTotalCosts(expenses)}</td>
+              } else{
+                return
+                <td className="td__red" > Diference </td>
+              <td className="td__red">{getTotalCosts(income) - getTotalCosts(expenses)}</td>
+              }
+
+
+}       */}
+            </tr>
+          </table>
+        </div>
+      </section>
+      <span className="edit_remove_buttons_container">
         <EditBudgetButton
           tableToggle={() => tableToggle()}
           editTableToggle={() => editTableToggle()}
@@ -152,10 +161,8 @@ function Table({
           budgetArray={budgetArray}
         />
       </span>
-    </section>
+    </>
   );
-  //   );
-  // }
 }
 
 export default Table;

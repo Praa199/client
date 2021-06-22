@@ -2,7 +2,7 @@ import React from "react";
 import { getData } from "../services/data.input";
 import Table from "../components/Table/Table";
 import Buttons from "../components/Table/Buttons";
-import { Route } from "react-router-dom";
+import EditInfo from "../components/Table/EditInfo";
 
 // import axios from "axios";
 // import { Link } from "react-router-dom";
@@ -11,6 +11,9 @@ import { Route } from "react-router-dom";
 function ProtectedTable(props) {
   const { user } = props;
   const [budgetArray, setBudgetArray] = React.useState([]);
+  const [tableState, setTableState] = React.useState(false);
+  const [editInfoState, setEditInfoState] = React.useState(false);
+  const [singleBudgetObject, setSingleBudgetObject] = React.useState();
 
   // export function removeSingleMonth(params) {}
   // const [showButtons, setShowButtons] = React.useState(false);
@@ -35,13 +38,49 @@ function ProtectedTable(props) {
     return;
   }
 
+  function tableToggle() {
+    !tableState
+      ? setTableState(true) && setEditInfoState(false)
+      : setTableState(false) && setEditInfoState(false);
+  }
+
+  function editTableToggle() {
+    !editInfoState
+      ? setEditInfoState(true) && setTableState(false)
+      : setEditInfoState(false) && setTableState(false);
+
+    console.log("this button edits the table");
+  }
+
   return (
-    <>
-      <Buttons budgetArray={budgetArray} setBudgetArray={setBudgetArray} />
-      {/* <button onClick={buttonsToggle}>Click here to fetch your data</button>
-      {showButtons && <Buttons budgetArray={budgetArray} />} */}
-      {/* <Route exact path="/protected/table/:id" component={Table} /> */}
-    </>
+    <div>
+      <h1>Months</h1>
+      <Buttons
+        budgetArray={budgetArray}
+        setSingleBudgetObject={setSingleBudgetObject}
+        tableToggle={tableToggle}
+        setEditInfoState={() => setEditInfoState(false)}
+      />
+      <>
+        {tableState && (
+          <Table
+            singleMonthData={singleBudgetObject}
+            tableToggle={() => tableToggle()}
+            setBudgetArray={setBudgetArray}
+            budgetArray={budgetArray}
+            editTableToggle={() => editTableToggle()}
+          />
+        )}
+        {editInfoState && (
+          <EditInfo
+            singleMonthData={singleBudgetObject}
+            setBudgetArray={setBudgetArray}
+            budgetArray={budgetArray}
+            editTableToggle={() => editTableToggle()}
+          />
+        )}
+      </>
+    </div>
   );
 }
 

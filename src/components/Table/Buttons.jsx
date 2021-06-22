@@ -3,7 +3,12 @@ import React from "react";
 // import { Link } from "react-router-dom";
 import BudgetInfo from "./BudgetInfo";
 
-function Buttons({ budgetArray, setBudgetArray }) {
+function Buttons({
+  budgetArray,
+  setSingleBudgetObject,
+  tableToggle,
+  setEditInfoState,
+}) {
   const [newBudgetArray, setNewBudgetArray] = React.useState([]);
   //   const [showTable, setShowTable] = React.useState(false);
 
@@ -17,14 +22,14 @@ function Buttons({ budgetArray, setBudgetArray }) {
   console.log("buttons**", newBudgetArray);
 
   return (
-    <div>
-      <h1>Months</h1>
+    <div className="button__container">
       {newBudgetArray.map((singleMonth) => (
         <>
           <BudgetInfo
+            setSingleBudgetObject={setSingleBudgetObject}
             monthInfo={singleMonth}
-            setBudgetArray={setBudgetArray}
-            budgetArray={budgetArray}
+            tableToggle={tableToggle}
+            setEditInfoState={setEditInfoState}
           />
           {/* <button onClick={tableToggle}>{singleMonth.month}</button>
           {showTable && <Table singleMonthData={singleMonth} />} */}

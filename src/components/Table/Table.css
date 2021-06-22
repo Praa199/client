@@ -1,0 +1,47 @@
+.table__container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  align-content: center;
+  max-width: 100rem;
+}
+
+.table__income,
+.table__expenses,
+.table__difference {
+  justify-content: center;
+  flex-direction: column;
+  align-content: center;
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.income_container,
+.expenses_container,
+.difference_container,
+.edit__form__container,
+.button__container,
+.edit_remove_buttons_container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  align-content: center;
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.td__green {
+  color: green;
+}
+
+.td__red {
+  color: red;
+}
+
+h1 {
+  color: orange;
+}
+
+.td__white {
+  color: white;
+}

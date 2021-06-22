@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "react-bootstrap";
 
 function EditBudgetButton({ tableToggle, editTableToggle }) {
   function clickListener() {
@@ -8,7 +9,7 @@ function EditBudgetButton({ tableToggle, editTableToggle }) {
 
   return (
     <>
-      <button onClick={() => clickListener()}> Edit </button>
+      <Button onClick={() => clickListener()}> Edit </Button>
     </>
   );
 }

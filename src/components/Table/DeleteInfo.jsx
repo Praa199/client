@@ -1,5 +1,7 @@
 import React from "react";
 import { removeSingleBudget } from "../../services/data.input";
+import { Button } from "react-bootstrap";
+
 // import { removeSingleMonth } from "../../pages/ProtectedTable";
 
 function removeBudget(id) {
@@ -32,9 +34,9 @@ function DeleteInfo({
     // setEditedBudgetArray(budgetArray);
   }
   return (
-    <div>
-      <button onClick={() => deletion()}>Remove</button>
-    </div>
+    <>
+      <Button onClick={() => deletion()}>Remove</Button>
+    </>
   );
 }
 

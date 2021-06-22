@@ -35,7 +35,9 @@ function DeleteInfo({
   }
   return (
     <>
-      <Button onClick={() => deletion()}>Remove</Button>
+      <Button variant="outline-danger" onClick={() => deletion()}>
+        Remove
+      </Button>
     </>
   );
 }

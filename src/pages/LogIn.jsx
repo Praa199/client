@@ -4,6 +4,7 @@ import "./Signup";
 import "./auth.css";
 import * as CONSTS from "../utils/consts";
 import * as PATHS from "../utils/paths";
+import { Button } from "react-bootstrap";
 
 export default function LogIn({ authenticate, history }) {
   const [form, setForm] = useState({
@@ -74,9 +75,9 @@ export default function LogIn({ authenticate, history }) {
           </div>
         )}
 
-        <button className="button__submit" type="submit">
+        <Button variant="outline-info" className="button__submit" type="submit">
           Submit
-        </button>
+        </Button>
       </form>
     </div>
   );

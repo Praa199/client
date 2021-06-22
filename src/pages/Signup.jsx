@@ -3,6 +3,7 @@ import { signup } from "../services/auth";
 import "./auth.css";
 import * as CONSTS from "../utils/consts";
 import * as PATHS from "../utils/paths";
+import { Button } from "react-bootstrap";
 
 export default function Signup({ authenticate, history }) {
   const [form, setForm] = useState({
@@ -90,9 +91,9 @@ export default function Signup({ authenticate, history }) {
           </div>
         )}
 
-        <button className="button__submit" type="submit">
+        <Button variant="outline-info" className="button__submit" type="submit">
           Submit
-        </button>
+        </Button>
       </form>
     </div>
   );

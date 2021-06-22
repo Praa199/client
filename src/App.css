@@ -14,7 +14,9 @@
 }
 
 .App-header {
-  background-color: black;
+  background-image: url("./absolutvision-uCMKx2H1Y38-unsplash.jpg");
+  background-size: cover;
+  /* background-color: black; */
   min-height: 100vh;
   display: flex;
   flex-direction: column;

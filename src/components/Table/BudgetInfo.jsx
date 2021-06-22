@@ -15,7 +15,11 @@ function BudgetInfo({
   return (
     <div>
       <>
-        <Button onClick={() => handleClick()} variant="primary" type="submit">
+        <Button
+          variant="outline-info"
+          onClick={() => handleClick()}
+          type="submit"
+        >
           {monthInfo.month}
         </Button>
       </>

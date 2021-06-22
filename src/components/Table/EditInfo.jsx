@@ -211,7 +211,7 @@ function EditInfo({
             <tr></tr>
           </table>
 
-          <Button variant="primary" type="submit">
+          <Button variant="outline-info" type="submit">
             Submit
           </Button>
         </Form>

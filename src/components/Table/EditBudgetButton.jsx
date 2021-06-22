@@ -9,7 +9,10 @@ function EditBudgetButton({ tableToggle, editTableToggle }) {
 
   return (
     <>
-      <Button onClick={() => clickListener()}> Edit </Button>
+      <Button variant="outline-info" onClick={() => clickListener()}>
+        {" "}
+        Edit{" "}
+      </Button>
     </>
   );
 }

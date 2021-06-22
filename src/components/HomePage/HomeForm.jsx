@@ -200,7 +200,7 @@ function HomeForm({ user }) {
             </div>
           )}
 
-          <Button variant="primary" type="submit">
+          <Button variant="outline-info" type="submit">
             Submit
           </Button>
         </Form>

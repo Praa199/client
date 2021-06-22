@@ -1,6 +1,7 @@
 import "../App.css";
 import HomeForm from "../components/HomePage/HomeForm";
 import Landing from "../components/HomePage/Landing";
+import "../absolutvision-uCMKx2H1Y38-unsplash.jpg";
 
 function HomePage(props) {
   const { user } = props;

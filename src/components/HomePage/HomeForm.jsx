@@ -74,7 +74,7 @@ function HomeForm({ user }) {
             message: "data input was unsuccessful! Please check the console.",
           });
         }
-        // formToggle();
+        formToggle();
         console.log("succesfully sent data to backend", res);
       });
     } else {

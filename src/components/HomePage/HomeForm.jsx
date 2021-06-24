@@ -1,6 +1,7 @@
 import { Button, Form } from "react-bootstrap";
 import React, { useState } from "react";
 import { sendData } from "../../services/data.input";
+import NewMonthButton from "./NewMonthButton";
 
 function HomeForm({ user }) {
   const [form, setForm] = useState({
@@ -17,6 +18,12 @@ function HomeForm({ user }) {
       otherExpenses: 0,
     },
   });
+
+  // const [homeFormState, setHomeFormState] = React.useState(true);
+
+  // function formToggle() {
+  //   !homeFormState ? setHomeFormState(true) : setHomeFormState(false);
+  // }
 
   const {
     month,
@@ -67,6 +74,7 @@ function HomeForm({ user }) {
             message: "data input was unsuccessful! Please check the console.",
           });
         }
+        // formToggle();
         console.log("succesfully sent data to backend", res);
       });
     } else {
@@ -79,8 +87,7 @@ function HomeForm({ user }) {
   return (
     <div>
       <>
-        <h1>Hey {user.username}, be welcome</h1>
-        <h3> Please provide with your data </h3>
+        {/* {homeFormState ? ( */}
 
         <Form onSubmit={handleFormSubmission}>
           <Form.Group controlId="formBasic">
@@ -93,7 +100,7 @@ function HomeForm({ user }) {
               onChange={handleInputChange}
             />
             <Form.Text className="text-muted">
-              Enter tha month you want to register.
+              Enter the month you want to register.
             </Form.Text>
           </Form.Group>
 
@@ -106,9 +113,7 @@ function HomeForm({ user }) {
               value={active}
               onChange={handleInputChange}
             />
-            <Form.Text className="text-muted">
-              Here you enter salaries, wages, etc.
-            </Form.Text>
+            <Form.Text className="text-muted">salaries, wages, etc.</Form.Text>
           </Form.Group>
 
           <Form.Group controlId="formBasic">
@@ -120,9 +125,7 @@ function HomeForm({ user }) {
               value={passive}
               onChange={handleInputChange}
             />
-            <Form.Text className="text-muted">
-              Here you enter interests, rents, etc.
-            </Form.Text>
+            <Form.Text className="text-muted">interests, rents, etc.</Form.Text>
           </Form.Group>
 
           <Form.Group controlId="formBasic">
@@ -135,7 +138,7 @@ function HomeForm({ user }) {
               onChange={handleInputChange}
             />
             <Form.Text className="text-muted">
-              Here you enter presents, gambling, etc.
+              presents, gambling, etc.
             </Form.Text>
           </Form.Group>
           <Form.Group controlId="formBasic">
@@ -148,7 +151,7 @@ function HomeForm({ user }) {
               onChange={handleInputChange}
             />
             <Form.Text className="text-muted">
-              Here you enter car payments, morgage, etc.
+              car payments, morgage, etc.
             </Form.Text>
           </Form.Group>
 
@@ -161,9 +164,7 @@ function HomeForm({ user }) {
               value={periodic}
               onChange={handleInputChange}
             />
-            <Form.Text className="text-muted">
-              Here you enter rent, food, etc.
-            </Form.Text>
+            <Form.Text className="text-muted">rent, food, etc.</Form.Text>
           </Form.Group>
 
           <Form.Group controlId="formBasic">
@@ -176,7 +177,7 @@ function HomeForm({ user }) {
               onChange={handleInputChange}
             />
             <Form.Text className="text-muted">
-              Here you enter recreation, hobbies, etc.
+              recreation, hobbies, etc.
             </Form.Text>
           </Form.Group>
 
@@ -190,7 +191,7 @@ function HomeForm({ user }) {
               onChange={handleInputChange}
             />
             <Form.Text className="text-muted">
-              Here you enter gambling, charity donations, etc.
+              gambling, charity donations, etc.
             </Form.Text>
           </Form.Group>
           {error && (
@@ -203,7 +204,18 @@ function HomeForm({ user }) {
           <Button variant="outline-info" type="submit">
             Submit
           </Button>
+          {/* <Button onClick={() => formToggle()} variant="outline-danger">
+            Close
+          </Button> */}
         </Form>
+        {/* ) : (
+          <NewMonthButton
+            setHomeFormState={() => setHomeFormState(false)}
+            homeFormState={homeFormState}
+            // formToggle={() => formToggle()}
+            user={user}
+          />
+        )} */}
       </>
     </div>
   );

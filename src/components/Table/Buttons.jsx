@@ -9,7 +9,7 @@ function Buttons({
   tableToggle,
   setEditInfoState,
 }) {
-  const [newBudgetArray, setNewBudgetArray] = React.useState([]);
+  const [newBudgetArray, setNewBudgetArray] = React.useState(budgetArray);
   //   const [showTable, setShowTable] = React.useState(false);
 
   React.useEffect(() => {
@@ -31,8 +31,6 @@ function Buttons({
             tableToggle={tableToggle}
             setEditInfoState={setEditInfoState}
           />
-          {/* <button onClick={tableToggle}>{singleMonth.month}</button>
-          {showTable && <Table singleMonthData={singleMonth} />} */}
         </>
       ))}
     </div>

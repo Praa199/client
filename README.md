@@ -4,7 +4,7 @@
 
 ## Description
 
-This is an OPA that recieves and calculates personal budgets.
+This is a Single Page App that recieves and calculates personal budgets.
 
 ## User Stories
 
@@ -173,4 +173,4 @@ The url to your repository and to your deployed project
 
 The url to your presentation slides
 
-[Slides Link]()
+[Slides Link](https://docs.google.com/presentation/d/1CaWDEtlLkG-H59dmJ-tPk2nLxLvYF-gH92c0HWay_EQ/edit?usp=sharing)

@@ -25,7 +25,9 @@ function EditInfo({
   const [error, setError] = useState(null);
 
   const onSubmit = (data) => {
-    editTableToggle();
+    filterParentState(data);
+    editTableToggle(data);
+    console.log(budgetArray);
 
     data.id = _id;
     data.user = user;
@@ -41,9 +43,8 @@ function EditInfo({
       data.otherExpenses >= 0
     ) {
       updateData(data).then((res) => {
-        console.log("submit update", data);
+        // console.log("submit update", data);
         if (!res.status) {
-          // unsuccessful signup
           console.error("data input was unsuccessful: ", res);
           return setError({
             message: "data input was unsuccessful! Please check the console.",
@@ -58,55 +59,26 @@ function EditInfo({
     }
   };
 
-  function filterParentState() {
-    const obj = budgetArray.filter((singMonth) => singMonth._id !== _id);
-    setBudgetArray(obj);
-    console.log(obj);
-    // return obj;
+  // function replaceValue(item) {}
+
+  // obj.p2.p21.map((item) => replaceValue(item));
+
+  function filterParentState(data) {
+    budgetArray.map((singleMonth) => {
+      if (singleMonth._id === _id) {
+        singleMonth.month = data.month;
+        singleMonth.passive = data.passive;
+        singleMonth.active = data.active;
+        singleMonth.otherIncome = data.otherIncome;
+        singleMonth.fixed = data.fixed;
+        singleMonth.variable = data.variable;
+        singleMonth.periodic = data.periodic;
+        singleMonth.otherExpenses = data.otherExpenses;
+        console.log(singleMonth);
+      }
+    });
   }
 
-  //   const [form, setForm] = useState({
-  //     month: "",
-  //     income: {
-  //       passive: income.passive,
-  //       active: income.active,
-  //       otherIncome: income.otherIncome,
-  //     },
-  //     expenses: {
-  //       fixed: expenses.fixed,
-  //       variable: expenses.variable,
-  //       periodic: expenses.periodic,
-  //       otherExpenses: expenses.otherExpenses,
-  //     },
-  //   });
-  //   const [error, setError] = useState(null);
-
-  //   function handleInputChange(event) {
-  //     console.log("input change");
-  //     const { name, value } = event.target;
-
-  //     return setForm({ ...form, [name]: value });
-  //   }
-
-  //   function handleFormSubmission(event) {
-  //     event.preventDefault();
-  //     const data = {
-  //       month,
-  //       passive,
-  //       active,
-  //       otherIncome,
-  //       fixed,
-  //       variable,
-  //       periodic,
-  //       otherExpenses,
-  //     };
-  //
-  //   }
-
-  //   function handleUpdate() {
-  //     saveUpdatedInfo();
-  //     console.log("updated");
-  //   }
   return (
     <div>
       <h1>Table</h1>

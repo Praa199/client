@@ -121,16 +121,16 @@ function Table({
             </tr>
             <tr>
               <td className="td__green"> Total Incomes </td>
-              <td className="td__white">{getTotalCosts(income)}</td>
+              <td className="td__white">$ {getTotalCosts(income)}.00</td>
             </tr>
             <tr>
               <td className="td__red">Total Expenses </td>
-              <td className="td__white">{getTotalCosts(expenses)} </td>
+              <td className="td__white">$ {getTotalCosts(expenses)}.00 </td>
             </tr>
             <tr>
               <td> Diference </td>
               <td className="td__white">
-                {getTotalCosts(income) - getTotalCosts(expenses)}
+                $ {getTotalCosts(income) - getTotalCosts(expenses)}.00
               </td>
 
               {/* {       if( (getTotalCosts(income) - getTotalCosts(expenses)) >= 1){

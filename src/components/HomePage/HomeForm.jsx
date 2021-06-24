@@ -19,11 +19,11 @@ function HomeForm({ user }) {
     },
   });
 
-  // const [homeFormState, setHomeFormState] = React.useState(true);
+  const [homeFormState, setHomeFormState] = React.useState(false);
 
-  // function formToggle() {
-  //   !homeFormState ? setHomeFormState(true) : setHomeFormState(false);
-  // }
+  function formToggle() {
+    !homeFormState ? setHomeFormState(true) : setHomeFormState(false);
+  }
 
   const {
     month,
@@ -87,135 +87,142 @@ function HomeForm({ user }) {
   return (
     <div>
       <>
-        {/* {homeFormState ? ( */}
+        {homeFormState ? (
+          <>
+            <Form onSubmit={handleFormSubmission}>
+              <Form.Group controlId="formBasic">
+                <Form.Label>Month</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Ex: January"
+                  name="month"
+                  value={month}
+                  onChange={handleInputChange}
+                />
+                <Form.Text className="text-muted">
+                  Enter the month you want to register.
+                </Form.Text>
+              </Form.Group>
 
-        <Form onSubmit={handleFormSubmission}>
-          <Form.Group controlId="formBasic">
-            <Form.Label>Month</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Ex: January"
-              name="month"
-              value={month}
-              onChange={handleInputChange}
-            />
-            <Form.Text className="text-muted">
-              Enter the month you want to register.
-            </Form.Text>
-          </Form.Group>
+              <Form.Group controlId="formBasic">
+                <Form.Label>Active Incomes</Form.Label>
+                <Form.Control
+                  type="number"
+                  placeholder="Ex: $200.00"
+                  name="active"
+                  value={active}
+                  onChange={handleInputChange}
+                />
+                <Form.Text className="text-muted">
+                  salaries, wages, etc.
+                </Form.Text>
+              </Form.Group>
 
-          <Form.Group controlId="formBasic">
-            <Form.Label>Active Incomes</Form.Label>
-            <Form.Control
-              type="number"
-              placeholder="Ex: $200.00"
-              name="active"
-              value={active}
-              onChange={handleInputChange}
-            />
-            <Form.Text className="text-muted">salaries, wages, etc.</Form.Text>
-          </Form.Group>
+              <Form.Group controlId="formBasic">
+                <Form.Label>Passive Incomes</Form.Label>
+                <Form.Control
+                  type="number"
+                  placeholder="Ex: $300.00 "
+                  name="passive"
+                  value={passive}
+                  onChange={handleInputChange}
+                />
+                <Form.Text className="text-muted">
+                  interests, rents, etc.
+                </Form.Text>
+              </Form.Group>
 
-          <Form.Group controlId="formBasic">
-            <Form.Label>Passive Incomes</Form.Label>
-            <Form.Control
-              type="number"
-              placeholder="Ex: $300.00 "
-              name="passive"
-              value={passive}
-              onChange={handleInputChange}
-            />
-            <Form.Text className="text-muted">interests, rents, etc.</Form.Text>
-          </Form.Group>
+              <Form.Group controlId="formBasic">
+                <Form.Label>Other Incomes</Form.Label>
+                <Form.Control
+                  type="number"
+                  placeholder="Ex: $150.00 "
+                  name="otherIncome"
+                  value={otherIncome}
+                  onChange={handleInputChange}
+                />
+                <Form.Text className="text-muted">
+                  presents, gambling, etc.
+                </Form.Text>
+              </Form.Group>
+              <Form.Group controlId="formBasic">
+                <Form.Label>Fixed Expenses</Form.Label>
+                <Form.Control
+                  type="number"
+                  placeholder="Ex: $200.00"
+                  name="fixed"
+                  value={fixed}
+                  onChange={handleInputChange}
+                />
+                <Form.Text className="text-muted">
+                  car payments, morgage, etc.
+                </Form.Text>
+              </Form.Group>
 
-          <Form.Group controlId="formBasic">
-            <Form.Label>Other Incomes</Form.Label>
-            <Form.Control
-              type="number"
-              placeholder="Ex: $150.00 "
-              name="otherIncome"
-              value={otherIncome}
-              onChange={handleInputChange}
-            />
-            <Form.Text className="text-muted">
-              presents, gambling, etc.
-            </Form.Text>
-          </Form.Group>
-          <Form.Group controlId="formBasic">
-            <Form.Label>Fixed Expenses</Form.Label>
-            <Form.Control
-              type="number"
-              placeholder="Ex: $200.00"
-              name="fixed"
-              value={fixed}
-              onChange={handleInputChange}
-            />
-            <Form.Text className="text-muted">
-              car payments, morgage, etc.
-            </Form.Text>
-          </Form.Group>
+              <Form.Group controlId="formBasic">
+                <Form.Label>Periodic Expenses</Form.Label>
+                <Form.Control
+                  type="number"
+                  placeholder="Ex: $200.00"
+                  name="periodic"
+                  value={periodic}
+                  onChange={handleInputChange}
+                />
+                <Form.Text className="text-muted">rent, food, etc.</Form.Text>
+              </Form.Group>
 
-          <Form.Group controlId="formBasic">
-            <Form.Label>Periodic Expenses</Form.Label>
-            <Form.Control
-              type="number"
-              placeholder="Ex: $200.00"
-              name="periodic"
-              value={periodic}
-              onChange={handleInputChange}
-            />
-            <Form.Text className="text-muted">rent, food, etc.</Form.Text>
-          </Form.Group>
+              <Form.Group controlId="formBasic">
+                <Form.Label>Variable Expenses</Form.Label>
+                <Form.Control
+                  type="number"
+                  placeholder="Ex: $300.00 "
+                  name="variable"
+                  value={variable}
+                  onChange={handleInputChange}
+                />
+                <Form.Text className="text-muted">
+                  recreation, hobbies, etc.
+                </Form.Text>
+              </Form.Group>
 
-          <Form.Group controlId="formBasic">
-            <Form.Label>Variable Expenses</Form.Label>
-            <Form.Control
-              type="number"
-              placeholder="Ex: $300.00 "
-              name="variable"
-              value={variable}
-              onChange={handleInputChange}
-            />
-            <Form.Text className="text-muted">
-              recreation, hobbies, etc.
-            </Form.Text>
-          </Form.Group>
+              <Form.Group controlId="formBasic">
+                <Form.Label>Other Expenses</Form.Label>
+                <Form.Control
+                  type="number"
+                  placeholder="Ex: $150.00 "
+                  name="otherExpenses"
+                  value={otherExpenses}
+                  onChange={handleInputChange}
+                />
+                <Form.Text className="text-muted">
+                  gambling, charity donations, etc.
+                </Form.Text>
+              </Form.Group>
+              {error && (
+                <div className="error-block">
+                  <p>There was an error submiting the form:</p>
+                  <p>{error.message}</p>
+                </div>
+              )}
 
-          <Form.Group controlId="formBasic">
-            <Form.Label>Other Expenses</Form.Label>
-            <Form.Control
-              type="number"
-              placeholder="Ex: $150.00 "
-              name="otherExpenses"
-              value={otherExpenses}
-              onChange={handleInputChange}
+              <Button variant="outline-info" type="submit">
+                Submit
+              </Button>
+              <Button onClick={() => formToggle()} variant="outline-danger">
+                Close
+              </Button>
+            </Form>
+          </>
+        ) : (
+          <>
+            <NewMonthButton
+              setHomeFormState={() => setHomeFormState()}
+              homeFormState={homeFormState}
+              formToggle={() => formToggle()}
+              user={user}
             />
-            <Form.Text className="text-muted">
-              gambling, charity donations, etc.
-            </Form.Text>
-          </Form.Group>
-          {error && (
-            <div className="error-block">
-              <p>There was an error submiting the form:</p>
-              <p>{error.message}</p>
-            </div>
-          )}
-
-          <Button variant="outline-info" type="submit">
-            Submit
-          </Button>
-          {/* <Button onClick={() => formToggle()} variant="outline-danger">
-            Close
-          </Button> */}
-        </Form>
-        {/* ) : (
-          <NewMonthButton
-            setHomeFormState={() => setHomeFormState(false)}
-            homeFormState={homeFormState}
-            // formToggle={() => formToggle()}
-            user={user}
-          />
-        )} */}
+          </>
+        )}
       </>
     </div>
   );

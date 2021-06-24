@@ -1,10 +1,10 @@
 import React from "react";
-import { Button } from "bootstrap";
+import { Button } from "react-bootstrap";
 
 function NewMonthButton({ formToggle, setHomeFormState, homeFormState }) {
   return (
     <>
-      <Button onClick={() => setHomeFormState()}> New</Button>
+      <Button onClick={() => formToggle()}> New</Button>
     </>
   );
 }

@@ -89,7 +89,7 @@ function HomeForm({ user }) {
       <>
         {homeFormState ? (
           <>
-            <Form onSubmit={handleFormSubmission}>
+            <Form className="home-form" onSubmit={handleFormSubmission}>
               <Form.Group controlId="formBasic">
                 <Form.Label>Month</Form.Label>
                 <Form.Control

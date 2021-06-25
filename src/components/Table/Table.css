@@ -1,7 +1,7 @@
 .table__container {
   display: flex;
   justify-content: space-evenly;
-  flex-direction: row;
+  flex-direction: column;
   align-content: center;
   max-width: 100rem;
 }
@@ -13,7 +13,10 @@
   flex-direction: column;
   align-content: center;
   max-width: 40rem;
-  margin: 0 auto;
+  background-color: rgb(60, 60, 60, 70%);
+  margin: 1rem 1rem;
+  border: 5rem;
+  border-radius: 5%;
 }
 
 .income_container,
@@ -42,6 +45,21 @@ h1 {
   color: orange;
 }
 
+.form-text,
 .td__white {
+  color: white;
+}
+.form-label {
+  color: rgb(5, 211, 211);
+  font-size: large;
+}
+
+.home-form {
+  background-color: rgb(60, 60, 60, 70%);
+  padding: 1rem;
+  border-radius: 2%;
+}
+
+#th__white {
   color: white;
 }

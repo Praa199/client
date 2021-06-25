@@ -26,6 +26,11 @@ export default function Signup({ authenticate, history }) {
       email,
       password,
     };
+    if (username.length < 3 || email.length < 7 || password.length < 7) {
+      return setError({
+        message: "Can't have empty fields.",
+      });
+    }
     signup(credentials).then((res) => {
       if (!res.status) {
         // unsuccessful signup
@@ -52,7 +57,7 @@ export default function Signup({ authenticate, history }) {
           id="input-username"
           type="text"
           name="username"
-          placeholder="Text"
+          placeholder="Username"
           value={username}
           onChange={handleInputChange}
           required
@@ -84,17 +89,16 @@ export default function Signup({ authenticate, history }) {
           minLength="8"
         />
 
-        {error && (
-          <div className="error-block">
-            <p>There was an error submiting the form:</p>
-            <p>{error.message}</p>
-          </div>
-        )}
-
         <Button variant="outline-info" className="button__submit" type="submit">
           Submit
         </Button>
       </form>
+      {error && (
+        <div className="error-block">
+          <p>There was an error submiting the form:</p>
+          <p>{error.message}</p>
+        </div>
+      )}
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { getData } from "../services/data.input";
 import Table from "../components/Table/Table";
 import Buttons from "../components/Table/Buttons";
 import EditInfo from "../components/Table/EditInfo";
+import "../absolutvision-uCMKx2H1Y38-unsplash.jpg";
 
 // import axios from "axios";
 // import { Link } from "react-router-dom";
@@ -53,7 +54,7 @@ function ProtectedTable(props) {
   }
 
   return (
-    <div>
+    <div className="table-page-container">
       <h1>Months</h1>
       <Buttons
         budgetArray={budgetArray}

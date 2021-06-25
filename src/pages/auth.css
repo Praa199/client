@@ -1,6 +1,13 @@
 div.signup,
 div.login {
-  background: black;
+  background: rgb(60, 60, 60, 70%);
+  width: 30%;
+  border-radius: 5%;
+}
+
+.login,
+.signup {
+  margin: 10% auto;
 }
 
 form.auth__form,
@@ -21,7 +28,8 @@ button.button__submit {
 .signup_h1,
 .login_h1,
 .signup_label,
-.login_label {
+.login_label,
+.error-block {
   color: orange;
 }
 

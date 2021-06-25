@@ -41,7 +41,7 @@ function Table({
           >
             <colgroup span="4"></colgroup>
             <tr>
-              <th className="th__green"> INCOMES </th>
+              <th id="th__white"> INCOMES </th>
             </tr>
             <tr>
               <td className="td__green"> ACTIVE </td>
@@ -76,7 +76,7 @@ function Table({
           >
             <colgroup span="4"></colgroup>
             <tr>
-              <th className="th__red"> EXPENSES </th>
+              <th id="th__white"> EXPENSES </th>
             </tr>
             <tr>
               <td className="td__red"> FIXED </td>
@@ -95,7 +95,7 @@ function Table({
               <td className="td__white"> $ {otherExpenses}.00 </td>
             </tr>
             <tr>
-              <td className="td__red"> TOTAL </td>
+              <td id="th__white"> TOTAL </td>
               <td> </td>
               <td className="td__white"> $ {getTotalCosts(expenses)}.00 </td>
               <td> </td>
